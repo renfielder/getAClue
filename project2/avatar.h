@@ -14,3 +14,9 @@ char* getAvatarName(Avatar* person);
 Item* getInventory(Avatar* person);
 
 Item* getHat(Avatar* person);
+
+char* lookDescription(room* current);
+
+Item* lookItems(room* current);
+
+Room* getCurrent(room* current);

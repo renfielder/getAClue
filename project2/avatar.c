@@ -25,13 +25,29 @@ Item* getInventory(Avatar* person){
 Item* getHat(Avatar* person){
   return person->hat;}
 
-Item* look(){
+//get current room 
+room* getCurrent(room* current){
+
+return current;
+}
+
+
+
+//look at the description of the room. list of items in the room
+char* lookDescription(room* current){
+
+return current -> description;
+ 
+}
+
+Item* lookItems(room* current){
+
+return current -> items;
 
 }
 
-Item* getInventory(){
-  
-}
+
+
 
 
 
