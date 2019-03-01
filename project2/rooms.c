@@ -1,6 +1,17 @@
 #include "rooms.h"
+#include <string.h>
 
-  room *newRoom=(struct Room*)malloc(sizeof(struct Room));
+//variables
+room* current;
+//the 8 rooms
+room kitchen, ballroom, conservatory, billiard, library, study, atrium, lounge, dining;
+
+//function to create a new room
+room* newRoom(char* description, Item* items, room* north, room* south, 
+                     room* east, room* west,room* up, room* down){
+
+  room *newRoom=(struct room*)malloc(sizeof(struct room));
+
   newRoom->description=description;
   newRoom->items=items;
   newRoom->North=north;
@@ -11,9 +22,6 @@
   newRoom->Down=down;
   
   return newRoom;
-}
-void room_exit_north(struct Room* current, struct Room* other){
-  current->North=other;
 }
 
 
@@ -29,6 +37,7 @@ void go(room* direction){
 void lock(room* tbl){
   tbl->locked=YES;
 }
+
 
 //prints the list of items in the room 
 void printItems(room* tbp){
