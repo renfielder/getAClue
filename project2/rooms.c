@@ -4,7 +4,7 @@
 //variables
 room* current;
 //the 8 rooms
-room kitchen, ballroom, conservatory, billiard, library, study, atrium, lunge, dining;
+room kitchen, ballroom, conservatory, billiard, library, study, atrium, lounge, dining;
 
 //function to create a new room
 room* newRoom(char* description, Item* items, room* north, room* south, 
@@ -32,8 +32,19 @@ void go(room* direction){
   else printf("There is nothing here!");
 }
 
+//locks the room
 void lock(room* tbl){
   tbl->locked=YES;
+}
+
+//prints the list of items in the room 
+void printItems(room* tbp){
+  
+}
+
+//free rooms
+void freeRooms(room* tbf){
+  
 }
 
 
