@@ -1,23 +1,33 @@
+#ifndef ITEM_H
+#define ITEM_H
+
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "rooms.h"
+#include <stdbool.h>
+#include <string.h>
 
-typedef struct Item{
+struct item{
   char *name;
   char *description;
-  struct Item *next;
+  bool equipable;
+  struct item *next;
 };
+typedef struct item Item;
+
 
 // constructor
-Item *item(char* name, char* description, Item *next);
+Item *item(char* name, char* description, bool equipable, Item *next);
 
 // getter methods
 char *item_name(Item *item);
 char *item_description(Item *item);
-bool item_equipable(Item *item)
+bool item_equipable(Item *item);
 Item *item_next(Item *item);
 
 // retrives an item from an array of Item structs
-Item take_item(struct Item* items, char* str);
+Item take_item(Item* items, char* str);
 
 void item_free(Item *item);
+
+#endif
