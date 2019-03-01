@@ -43,7 +43,7 @@ void printItems(room* tbp){
 }
 
 //free rooms
-void freeRooms(room* tbf){
+void freeRooms(){
   free(kitchen);
   free(ballroom);
   free(billiard);
