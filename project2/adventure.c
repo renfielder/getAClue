@@ -28,16 +28,16 @@ void init_game(){
       room conservatory("Conservatory", "You can almost taste freedoom! But there are vicious dogs outside.", conser_items, NULL, billiard, lounge, NULL);
       room billiard("Billiard Room", "A place for games, too bad you don't have time", billroom_items, conservatory, library, NULL, study);
       room study("Study", "You could get a lot of work done here.", study_items, library, NULL, kitchen, atrium);
+
+      Avatar person = avatar("No Name", NULL, NULL);
 }
 
 int main(void){
 
     printf("Welcome to an Adventure!\n");
     printf("What do you want your name to be?\n");
-
-=======
     scanf("%c", person -> name);
-    printf("%c", getAvatarName(person)      
+    printf("%c", getAvatarName(person)
     ));
     init_game();
 return 0;
