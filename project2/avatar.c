@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h> 
 #include <string.h> 
-#include "items.h"
+#include "item.h"
 #include "rooms.h"
 
+extern room* current;
 
 
 Avatar* avatar(char* name, Item* inventory, Item* hat){
@@ -44,6 +45,11 @@ Item* lookItems(room* current){
 
 return current -> items;
 
+}
+
+char* lookItemsDescription(room* current){
+
+  return current -> items -> description;
 }
 
 
