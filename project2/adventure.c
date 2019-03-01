@@ -25,11 +25,14 @@ void init_game(){
       room atrium("Atrium", "What an ostentatious house...", atrium_items, NULL, *win room*, study, lounge);
       room lounge("Lounge", "A fancy room with several lounging couches", lounge_items, dining, NULL, conservatory, atrium);
       room dining("Dining Room", "Every thing is set up, were they planning a party?", droom_items, kitchen, lounge, NULL, NULL);
+      //kitchen is locked
       room kitchen("Kitchen", "This is where the sausage is made.", kitchen_items, NULL, dining, study, ballroom);
       room ballroom("Balllroom", "You could fit so many bodies in here!", ballroom_items, NULL, NULL, conservatory, kitchen);
+      //consevatory is locked
       room conservatory("Conservatory", "You can almost taste freedoom! But there are vicious dogs outside.", conser_items, NULL, billiard, lounge, NULL);
       room billiard("Billiard Room", "A place for games, too bad you don't have time", billroom_items, conservatory, library, NULL, study);
       room study("Study", "You could get a lot of work done here.", study_items, library, NULL, kitchen, atrium);
+      //conservatory is locked
       room winRoom("Win Room","this is where you win",NULL,atrium,NULL, NULL, NULL, NULL, NULL);
       rooom upStairs("UpStairs Secret Room", "this is just to satisfy the reqs.",upStairs_items, NULL, NULL, NULL, NULL, NULL, conservatory);
 }
@@ -55,7 +58,7 @@ int main(void){
     printf("Welcome, %s", name);
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
       char command[30];
-    while(gameOver==0){         //fix
+    while(!gameOver){        //fix
           printf("What do you want to do now?");
           scanf("%s", &command);
           if(strcmp(command, "look")==0)
