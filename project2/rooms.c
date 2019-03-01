@@ -38,8 +38,15 @@ void lock(room* tbl){
   tbl->locked=YES;
 }
 
+
+void printItems(room* tbp){
+
+}
+
 //free rooms
-void freeRooms(){
+void freeRooms(room* tbf){
+
+
   free(kitchen);
   free(ballroom);
   free(billiard);
