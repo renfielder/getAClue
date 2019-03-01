@@ -5,6 +5,8 @@
 #include "item.h"
 #include "rooms.h"
 
+int gameOver;
+
 void init_game(){
       Item *atrium_items = ();
       Item *lounge_items = ();
@@ -25,4 +27,11 @@ int main(void){
     ));
     init_game();
 return 0;
+
+if(gameOver == 1){
+      printf("You've Won!");
+}
+elseif(gameOver == 0){
+      continue;
+}
 }
