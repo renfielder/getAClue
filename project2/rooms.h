@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "items.h"
+#include "item.h"
 #include "avatar.h"
 #define YES 1
 #define NO 0
@@ -25,6 +25,3 @@ struct room{
 };
 
 typedef struct room room;
-
-
-

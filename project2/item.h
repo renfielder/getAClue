@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "rooms.h"
+#include <stdbool.h>
 
 typedef struct Item{
   char *name;
   char *description;
   struct Item *next;
-} Item;
+};
 
 // constructor
 Item *item(char* name, char* description, Item *next);
