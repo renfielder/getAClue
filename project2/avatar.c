@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h> 
 #include <string.h> 
-#include "items.h"
+#include "item.h"
 #include "rooms.h"
 
 
