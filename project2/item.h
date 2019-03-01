@@ -15,6 +15,7 @@ struct item{
 };
 typedef struct item Item;
 
+
 // constructor
 Item *item(char* name, char* description, bool equipable, Item *next);
 
