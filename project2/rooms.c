@@ -44,7 +44,15 @@ void printItems(room* tbp){
 
 //free rooms
 void freeRooms(room* tbf){
-  
+  free(kitchen);
+  free(ballroom);
+  free(billiard);
+  free(conservatory);
+  free(library);
+  free(study);
+  free(atrium);
+  free(lounge);
+  free(dining);
 }
 
 
