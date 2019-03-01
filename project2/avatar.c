@@ -21,11 +21,16 @@ char* getAvatarName(Avatar* person){
   return person->name;}
 
 Item* getInventory(Avatar* person){
+  
   return person->inventory;
 }
 
-Item* getHat(Avatar* person){
-  return person->hat;}
+char* getInventoryItemDescription(Avatar* person, char* variable){
+
+return item -> description;
+}
+
+
 
 //get current room
 room* getCurrent(room* current){
@@ -34,16 +39,35 @@ return current;
 }
 
 
-
 //look at the description of the room. list of items in the room
-char* lookDescription(room* current){
+char* lookRoomDescription(room* current){
 
 return current -> description;
 
 }
 
-Item* lookItems(room* current){
+Item* lookItemsinRoom(room* current){
 
 return current -> items;
 
 }
+
+
+char* lookItemsinRoomDescription(room* current){
+
+  return current -> items -> description;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
