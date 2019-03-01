@@ -32,6 +32,7 @@ void init_game(){
       room study("Study", "You could get a lot of work done here.", study_items, library, NULL, kitchen, atrium);
       room winRoom("Win Room","this is where you win",NULL,atrium,NULL, NULL, NULL, NULL, NULL);
       rooom upStairs("UpStairs Secret Room", "this is just to satisfy the reqs.",upStairs_items, NULL, NULL, NULL, NULL, NULL, conservatory);
+       Avatar person = avatar("No Name", NULL, NULL);
 }
 
 void help(){
