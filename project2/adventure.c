@@ -26,10 +26,11 @@ int main(void){
     printf("%c", getAvatarName(person)      
     ));
     init_game();
-return 0;
-
-if(gameOver){
+    if(gameOver){
       printf("You've Won!");
 }
+return 0;
+
+
 
 }
