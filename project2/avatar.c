@@ -3,6 +3,7 @@
 #include <string.h>
 #include "item.h"
 #include "rooms.h"
+#include "avatar.h"
 
 
 

@@ -8,7 +8,7 @@
 #define YES 1
 #define NO 0
 
-typedef struct {
+typedef struct avatar{
   char* name;
   Item* inventory;
   Item* hat;

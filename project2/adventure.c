@@ -6,19 +6,9 @@
 #include "avatar.h"
 
 extern room* winRoom, *kitchen, *ballroom, *conservatory, *billiard, *library, *study, *atrium, *lounge, *dining, *upStairs;
-/*extern room* kitchen;
-extern room* ballroom;
-extern room* conservatory;
-extern room* billiard;
-extern room* library;
-extern room* study;
-extern room* atrium;
-extern room*lounge;
-extern room* */
 //if gameOver is 1, the game is over. The game is over when the avatar enters the winRoom
 int gameOver=0;
 
-extern room* current;
 
 void init_game(){
       Item *atrium_items = NULL;
@@ -59,33 +49,32 @@ int main(void){
     scanf("%s", person->name);
     printf("%s", getAvatarName(person));
     printf("Welcome to an Adventure!\n");
-    current=atrium;
     printf("Welcome, %s", person->name);
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
     char *command;
     while(!gameOver){         //fix
           printf("What do you want to do now?");
           scanf("%s", command);
-          if(strcmp(command, "look")==0)
+          if(strcmp(command, "look")==0){}
                 //look in room
            else if(strcmp(command, "go north")==0)
-                 person->current=go(north, person->current);
+                 person->current=go((person->current)->North, person->current);
                  else if(strcmp(command, "go south")==0)
-                        person->current=go(south, person->current);
+                        person->current=go(person->current->South, person->current);
                        else if(strcmp(command, "go east")==0)
-                              person->current=go(east, person->current);
+                              person->current=go(person->current->East, person->current);
                              else if(strcmp(command, "go west")==0)
-                                   person->current=go(west, person->current);
+                                   person->current=go(person->current->West, person->current);
                                    else if(strcmp(command, "go up")==0)
-                                         person->current=go(up, person->current);
+                                         person->current=go(person->current->Up, person->current);
                                          else if(strcmp(command, "go down")==0)
-                                              person->current=go(down, person->current);
+                                              person->current=go(person->current->Down, person->current);
           if(person->current==winRoom)
                 gameOver=1;
     }
       printf("You've Won! Your avatar is dead!");
-      item_free()
+    /*  while(person->inventory != NULL){
+            person->inventory
+    }*/
 return 0;
-}
-
 }
