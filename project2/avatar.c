@@ -6,13 +6,15 @@
 
 
 
-Avatar* avatar(char* name, Item* inventory, Item* hat){
-  Avatar* avatar;
-  avatar = (struct Avatar*) malloc(sizeof(struct Avatar));
-  avatar -> name = name;
-  avatar -> inventory = inventory;
-  avatar -> hat = hat;
-  return avatar;
+Avatar* avatar(char* name, Item* inventory, Item* hat, room* current){
+  Avatar* newAvatar;
+  newAvatar = (struct Avatar*) malloc(sizeof(struct Avatar));
+  newAvatar->name=malloc(sizeof(name));
+  strcpy(newAvatar->name, name);
+  newAvatar -> inventory = inventory;
+  newAvatar -> hat = hat;
+  newAvatar->current = current
+  return newAvatar;
 }
 
 char* getAvatarName(Avatar* person){

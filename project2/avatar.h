@@ -12,7 +12,10 @@ typedef struct {
   char* name;
   Item* inventory;
   Item* hat;
+  room* current;
 }Avatar;
+
+Avatar* avatar(char* name, Item* inventory, Item* hat, room* current);
 
 char* getAvatarName(Avatar* person);
 

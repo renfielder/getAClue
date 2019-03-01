@@ -30,6 +30,7 @@ void init_game(){
       Item *conser_items = NULL;
       Item *billroom_items = NULL;
       Item *study_items = NULL;
+      Item *upStairs_items=NULL;
       atrium = newRoom("Atrium", "What an ostentatious house...", atrium_items, NULL, winRoom, study, lounge,NULL,NULL);
       lounge= newRoom("Lounge", "A fancy room with several lounging couches", lounge_items, dining, NULL, conservatory, atrium,NULL,NULL);
       dining= newRoom("Dining Room", "Every thing is set up, were they planning a party?", droom_items, kitchen, lounge, NULL, NULL,NULL,NULL);
@@ -40,7 +41,6 @@ void init_game(){
       study = newRoom("Study", "You could get a lot of work done here.", study_items, library, NULL, kitchen, atrium,NULL,NULL);
       winRoom= newRoom("Win Room","this is where you win",NULL,atrium,NULL, NULL, NULL, NULL, NULL);
       upStairs= newRoom("UpStairs Secret Room", "this is just to satisfy the reqs.",upStairs_items, NULL, NULL, NULL, NULL, NULL, conservatory);
-      static Avatar person = Avatar("No Name", NULL, NULL);
 }
 
 void help(){
@@ -54,38 +54,38 @@ void help(){
 }
 
 int main(void){
-       init_game();    //setting up the game
-      printf("What do you want your name to be?\n");
-      scanf("%c", person -> name);
-    printf("%c", getAvatarName(person));
+    init_game();    //setting up the game
+    Avatar *person = avatar("No Name", NULL, NULL, atrium);
+    printf("What do you want your name to be?\n");
+    scanf("%s", person->name);
+    printf("%s", getAvatarName(person));
     printf("Welcome to an Adventure!\n");
-    scanf("%s", &name);
     current=atrium;
-    printf("Welcome, %s", name);
+    printf("Welcome, %s", person->name);
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
-
-      char* command;
-    while(gameOver==0){         //fix
+    char *command;
+    while(!gameOver){         //fix
           printf("What do you want to do now?");
-          scanf("%s", &command);
+          scanf("%s", command);
           if(strcmp(command, "look")==0)
                 //look in room
            else if(strcmp(command, "go north")==0)
-                 go(north);
+                 person->current=go(north, person->current);
                  else if(strcmp(command, "go south")==0)
-                        go(south);
+                        person->current=go(south, person->current);
                        else if(strcmp(command, "go east")==0)
-                              go(east);
+                              person->current=go(east, person->current);
                              else if(strcmp(command, "go west")==0)
-                                   go(west);
+                                   person->current=go(west, person->current);
                                    else if(strcmp(command, "go up")==0)
-                                         go(up);
+                                         person->current=go(up, person->current);
                                          else if(strcmp(command, "go down")==0)
-                                              go(down);
-          if(current==winRoom)
+                                              person->current=go(down, person->current);
+          if(person->current==winRoom)
                 gameOver=1;
     }
       printf("You've Won! Your avatar is dead!");
+      item_free()
 return 0;
 }
 
