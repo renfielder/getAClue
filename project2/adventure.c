@@ -21,6 +21,7 @@ int gameOver=0;
 extern room* current;
 
 void init_game(){
+
       Item *atrium_items = NULL;
       Item *lounge_items = NULL;
       Item *droom_items = NULL;
@@ -62,6 +63,7 @@ int main(void){
     current=atrium;
     printf("Welcome, %s", name);
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
+
       char* command;
     while(gameOver==0){         //fix
           printf("What do you want to do now?");
