@@ -6,15 +6,7 @@
 #include "avatar.h"
 
 extern room* winRoom, *kitchen, *ballroom, *conservatory, *billiard, *library, *study, *atrium, *lounge, *dining, *upStairs;
-/*extern room* kitchen;
-extern room* ballroom;
-extern room* conservatory;
-extern room* billiard;
-extern room* library;
-extern room* study;
-extern room* atrium;
-extern room*lounge;
-extern room* */
+
 //if gameOver is 1, the game is over. The game is over when the avatar enters the winRoom
 int gameOver=0;
 
@@ -65,6 +57,9 @@ int main(void){
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
     char *command;
     while(!gameOver){         //fix
+    printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
+      char* command;
+    while(gameOver==0){         //fix
           printf("What do you want to do now?");
           scanf("%s", command);
           if(strcmp(command, "look")==0)
