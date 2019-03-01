@@ -5,9 +5,11 @@
 #include "item.h"
 #include "rooms.h"
 
+int gameOver;
+
 void init_game(){
       Item *atrium_items = ();
-      Item *lounge_items = ();
+      Item *lounge_items = ("Magnifying Glass", "Can ");
       Item *droom_items = ();
       Item *kitchen_items = ("Knife","Looks sharp!", 0, ("Ladel", "Looks dull!", 0, (NULL)));
       Item *ballroom_items = ():
@@ -20,5 +22,14 @@ int main(void){
 
     printf("Welcome to an Adventure!\n");
     printf("What do you want your name to be?\n");
+    scanf("%c", person -> name);
+    printf("%c", getAvatarName(person)      
+    ));
+    init_game();
 return 0;
+
+if(gameOver){
+      printf("You've Won!");
+}
+
 }
