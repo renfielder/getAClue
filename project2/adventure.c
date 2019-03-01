@@ -5,6 +5,8 @@
 #include "item.h"
 #include "rooms.h"
 
+extern room* current;
+
 void init_game(){
       Item *atrium_items = ();
       Item *lounge_items = ();
@@ -31,8 +33,28 @@ int main(void){
     printf("Welcome to an Adventure!\n");
     printf("What do you want your name to be?\n");
     scanf("%s", &name);
-    extern current=atrium;
+    current=atrium;
     printf("Welcome, %s", name);
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
+      char command[30];
+    while(!isOver(){
+          printf("What do you want to do now?");
+          scanf("%s", &command);
+          if(strcmp(command, "look")==0)
+                //look in room
+           else if(strcmp(command, "go north")==0)
+                 go(north);
+                 else if(strcmp(command, "go south")==0)
+                        go(south);
+                       else if(strcmp(command, "go east")==0)
+                              go(east);
+                             else if(strcmp(command, "go west")==0)
+                                   go(west);
+                                   else if(strcmp(command, "go up")==0)
+                                         go(up);
+                                         else if(strcmp(command, "go down")==0)
+                                              go(down); 
+    }
+     
 return 0;
 }
