@@ -14,6 +14,8 @@ typedef struct {
   Item* hat;
 }Avatar;
 
+Avatar* avatar(char* name, Item* inventory, Item* hat);
+
 char* getAvatarName(Avatar* person);
 
 Item* getInventory(Avatar* person);
