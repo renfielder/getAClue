@@ -24,6 +24,7 @@ room* newRoom(char* name, char* description, Item* items, room* north, room* sou
   return newRoom;
 }
 
+
 //function to exit current room to room in specified direction
 void go(room* direction){
   if(current->direction != NULL){
@@ -37,7 +38,7 @@ void lock(room* tbl){
   tbl->locked=YES;
 }
 
-//prints the list of items in the room
+
 void printItems(room* tbp){
 
 }
@@ -45,4 +46,14 @@ void printItems(room* tbp){
 //free rooms
 void freeRooms(room* tbf){
 
+
+  free(kitchen);
+  free(ballroom);
+  free(billiard);
+  free(conservatory);
+  free(library);
+  free(study);
+  free(atrium);
+  free(lounge);
+  free(dining);
 }

@@ -6,7 +6,9 @@
 #include "rooms.h"
 exturn room kitchen, ballroom, conservatory, billiard, library, study, atrium, lounge, dining;
 
-NSEW
+
+int gameOver;
+
 void init_game(){
       Item knife = item("Knife","Looks sharp!", 0, NULL);
       Item ladel = item("Ladel", "Looks dull!", 0,NULL);
@@ -32,6 +34,17 @@ int main(void){
 
     printf("Welcome to an Adventure!\n");
     printf("What do you want your name to be?\n");
-    scanf("")
-    return 0;
+
+=======
+    scanf("%c", person -> name);
+    printf("%c", getAvatarName(person)      
+    ));
+    init_game();
+return 0;
+
+if(gameOver){
+      printf("You've Won!");
+}
+
+
 }
