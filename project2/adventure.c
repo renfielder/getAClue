@@ -54,7 +54,7 @@ void help(){
 
 int main(void){
     init_game();    //setting up the game
-    Avatar *person = avatar("No Name", NULL, NULL);
+    Avatar *person = avatar("No Name", NULL, NULL, atrium);
     printf("What do you want your name to be?\n");
     scanf("%s", person->name);
     printf("%s", getAvatarName(person));
@@ -63,27 +63,28 @@ int main(void){
     printf("Welcome, %s", person->name);
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
     char *command;
-    while(gameOver==0){         //fix
+    while(!gameOver){         //fix
           printf("What do you want to do now?");
           scanf("%s", command);
           if(strcmp(command, "look")==0)
                 //look in room
            else if(strcmp(command, "go north")==0)
-                 go(north);
+                 person->current=go(north, person->current);
                  else if(strcmp(command, "go south")==0)
-                        go(south);
+                        person->current=go(south, person->current);
                        else if(strcmp(command, "go east")==0)
-                              go(east);
+                              person->current=go(east, person->current);
                              else if(strcmp(command, "go west")==0)
-                                   go(west);
+                                   person->current=go(west, person->current);
                                    else if(strcmp(command, "go up")==0)
-                                         go(up);
+                                         person->current=go(up, person->current);
                                          else if(strcmp(command, "go down")==0)
-                                              go(down);
-          if(current==winRoom)
+                                              person->current=go(down, person->current);
+          if(person->current==winRoom)
                 gameOver=1;
     }
       printf("You've Won! Your avatar is dead!");
+      item_free()
 return 0;
 }
 
