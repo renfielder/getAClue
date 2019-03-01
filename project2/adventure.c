@@ -26,6 +26,8 @@ int main(void){
     printf("%c", getAvatarName(person)      
     ));
     init_game();
+    //gameOver == entering atrium and unlocking it 
+    
     if(gameOver){
       printf("You've Won!");
 }
