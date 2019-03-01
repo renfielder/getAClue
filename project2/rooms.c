@@ -4,15 +4,17 @@
 //variables
 room* current;
 //the 8 rooms
-room kitchen, ballroom, conservatory, billiard, library, study, atrium, lounge, dining;
+room* kitchen, ballroom, conservatory, billiard, library, study, atrium, lounge, dining, upStairs, winRoom;
 
 //function to create a new room
 room* newRoom(char* name, char* description, Item* items, room* north, room* south,
                      room* east, room* west,room* up, room* down){
 
-  room *newRoom=(struct room*)malloc(sizeof(struct room));
-  newRoom->name = name;
-  newRoom->description=description;
+  room *newRoom=(room*)malloc(sizeof( room));
+  newRoom->name=malloc(sizeof(name));
+  strcpy(newRoom->name, name);
+  newRoom->description=malloc(sizeof(description));
+  strcpy(newRoom->description, description);
   newRoom->items=items;
   newRoom->North=north;
   newRoom->South=south;
@@ -20,7 +22,7 @@ room* newRoom(char* name, char* description, Item* items, room* north, room* sou
   newRoom->West=west;
   newRoom->Up=up;
   newRoom->Down=down;
-
+  newRoom->locked = NO;
   return newRoom;
 }
 

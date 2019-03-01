@@ -1,17 +1,17 @@
 #include <stdio.h>
-#include <stdlib.h> 
-#include <string.h> 
+#include <stdlib.h>
+#include <string.h>
 #include "item.h"
 #include "rooms.h"
 
 
 
 Avatar* avatar(char* name, Item* inventory, Item* hat){
-  Avatar* avatar; 
+  Avatar* avatar;
   avatar = (struct Avatar*) malloc(sizeof(struct Avatar));
   avatar -> name = name;
   avatar -> inventory = inventory;
-  avatar -> hat = hat; 
+  avatar -> hat = hat;
   return avatar;
 }
 
@@ -25,7 +25,7 @@ Item* getInventory(Avatar* person){
 Item* getHat(Avatar* person){
   return person->hat;}
 
-//get current room 
+//get current room
 room* getCurrent(room* current){
 
 return current;
@@ -37,7 +37,7 @@ return current;
 char* lookDescription(room* current){
 
 return current -> description;
- 
+
 }
 
 Item* lookItems(room* current){
@@ -45,15 +45,3 @@ Item* lookItems(room* current){
 return current -> items;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
