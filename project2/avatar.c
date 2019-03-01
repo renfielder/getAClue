@@ -1,18 +1,17 @@
 #include <stdio.h>
-#include <stdlib.h> 
-#include <string.h> 
+#include <stdlib.h>
+#include <string.h>
 #include "item.h"
 #include "rooms.h"
 
-extern room* current;
 
 
 Avatar* avatar(char* name, Item* inventory, Item* hat){
-  Avatar* avatar; 
+  Avatar* avatar;
   avatar = (struct Avatar*) malloc(sizeof(struct Avatar));
   avatar -> name = name;
   avatar -> inventory = inventory;
-  avatar -> hat = hat; 
+  avatar -> hat = hat;
   return avatar;
 }
 
@@ -20,37 +19,44 @@ char* getAvatarName(Avatar* person){
   return person->name;}
 
 Item* getInventory(Avatar* person){
+  
   return person->inventory;
 }
 
-Item* getHat(Avatar* person){
-  return person->hat;}
+char* getInventoryItemDescription(Avatar* person, char* variable){
 
-//get current room 
+return item -> description;
+}
+
+
+
+//get current room
 room* getCurrent(room* current){
 
 return current;
 }
 
 
-
 //look at the description of the room. list of items in the room
-char* lookDescription(room* current){
+char* lookRoomDescription(room* current){
 
 return current -> description;
- 
+
 }
 
-Item* lookItems(room* current){
+Item* lookItemsinRoom(room* current){
 
 return current -> items;
 
 }
 
-char* lookItemsDescription(room* current){
+
+char* lookItemsinRoomDescription(room* current){
 
   return current -> items -> description;
 }
+
+
 
 
 
