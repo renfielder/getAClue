@@ -39,9 +39,7 @@ void lock(room* tbl){
 }
 
 //free rooms
-void freeRooms(room* tbf){
-
-
+void freeRooms(){
   free(kitchen);
   free(ballroom);
   free(billiard);
