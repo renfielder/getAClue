@@ -18,7 +18,6 @@ typedef struct item Item;
 
 // constructor
 Item *item(char* name, char* description, bool equipable, Item *next);
-
 // getter methods
 char *item_name(Item *item);
 char *item_description(Item *item);

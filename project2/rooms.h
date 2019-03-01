@@ -28,7 +28,7 @@ typedef struct {
 
 //function prototype declarations
 room* newRoom(char* name, char* description, Item* items, room *north, room *south, room *east, room *west,room *up, room *down);
-void go(room* other);
+void go(room* other, room* curr);
 void lock(room* tbl);
 void printItems(room* tbp);
 
