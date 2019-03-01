@@ -38,12 +38,6 @@ void lock(room* tbl){
   tbl->locked=YES;
 }
 
-
-//prints the list of items in the room 
-void printItems(room* tbp){
-  
-}
-
 //free rooms
 void freeRooms(room* tbf){
   free(kitchen);

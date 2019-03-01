@@ -36,3 +36,5 @@ char* lookDescription(room* current);
 Item* lookItems(room* current);
 
 Room* getCurrent(room* current);
+
+char* lookItemsDescription(room* current);
