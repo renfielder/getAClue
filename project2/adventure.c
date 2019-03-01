@@ -33,13 +33,12 @@ void init_game(){
 }
 
 int main(void){
-
+    init_game();
     printf("Welcome to an Adventure!\n");
     printf("What do you want your name to be?\n");
     scanf("%c", person -> name);
     printf("%c", getAvatarName(person)
     ));
-    init_game();
 return 0;
 
 if(gameOver){
