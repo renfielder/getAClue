@@ -29,7 +29,7 @@ void help(){
 }
 
 int main(void){
-    char name[20];
+    char name[20];   //not sure if we need this, ignore for now.
     printf("Welcome to an Adventure!\n");
     printf("What do you want your name to be?\n");
     scanf("%s", &name);
@@ -37,7 +37,7 @@ int main(void){
     printf("Welcome, %s", name);
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
       char command[30];
-    while(!isOver(){
+    while(!isOver(){         //fix
           printf("What do you want to do now?");
           scanf("%s", &command);
           if(strcmp(command, "look")==0)
