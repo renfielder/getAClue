@@ -11,6 +11,7 @@ int gameOver=0;
 
 
 void init_game(){
+
       Item *atrium_items = NULL;
       Item *lounge_items = NULL;
       Item *droom_items = NULL;

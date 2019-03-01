@@ -4,6 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "item.h"
+
+
+#include "avatar.h"
+
 #define YES 1
 #define NO 0
 
