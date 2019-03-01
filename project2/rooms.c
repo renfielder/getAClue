@@ -14,4 +14,5 @@
 }
 void room_exit_north(struct Room* current, struct Room* other){
   current->North=other;
+}
 
