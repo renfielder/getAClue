@@ -16,9 +16,23 @@ void init_game(){
       Item *study_items = ();
 }
 
-int main(void){
+void help(){
+      printf("Use the command 'look' to see the room you are in.\n");
+      printf("Use the command 'look' to see the room you are in.\n");
+      printf("Use the command 'go DIRECTION' to go north, south, east, west, up, or down\n");
+      printf("Use the command 'take ITEM' to pick up an item in a room.\n");
+      printf("Use the command 'use ITEM' to use an item in your inventory.\n");
+      printf("Use the command 'drop ITEM' to drop an item from your inventory.\n");
+      printf("Use the command 'help' to see this list again.\n");
+}
 
+int main(void){
+    char name[20];
     printf("Welcome to an Adventure!\n");
     printf("What do you want your name to be?\n");
+    scanf("%s", &name);
+    extern current=atrium;
+    printf("Welcome, %s", name);
+    printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
 return 0;
 }
