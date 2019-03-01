@@ -7,11 +7,11 @@ room* current;
 room kitchen, ballroom, conservatory, billiard, library, study, atrium, lounge, dining;
 
 //function to create a new room
-room* newRoom(char* description, Item* items, room* north, room* south, 
+room* newRoom(char* name, char* description, Item* items, room* north, room* south,
                      room* east, room* west,room* up, room* down){
 
   room *newRoom=(struct room*)malloc(sizeof(struct room));
-
+  newRoom->name = name;
   newRoom->description=description;
   newRoom->items=items;
   newRoom->North=north;
@@ -20,7 +20,7 @@ room* newRoom(char* description, Item* items, room* north, room* south,
   newRoom->West=west;
   newRoom->Up=up;
   newRoom->Down=down;
-  
+
   return newRoom;
 }
 
@@ -37,15 +37,12 @@ void lock(room* tbl){
   tbl->locked=YES;
 }
 
-//prints the list of items in the room 
+//prints the list of items in the room
 void printItems(room* tbp){
-  
+
 }
 
 //free rooms
 void freeRooms(room* tbf){
-  
+
 }
-
-
-
