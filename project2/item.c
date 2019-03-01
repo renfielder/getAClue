@@ -1,15 +1,4 @@
 #include "item.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-
-struct Item{
-  char* name;
-  char* description;
-  bool equipable;
-  struct Item *next;
-};
 
 Item *item(char* name, char* description, bool equipable, struct Item* next){
   struct Item* newItem= (struct Item*) malloc(sizeof(struct Item));
@@ -20,11 +9,11 @@ Item *item(char* name, char* description, bool equipable, struct Item* next){
   return newItem;
 }
 
-char* item_name(struct Item* item){
+char* item_name(Item* item){
   return (*item).name;
   //item->name
 }
-char* item_description(struct Item* item){
+char* item_description( Item* item){
   return item->description;
 }
 
@@ -32,11 +21,11 @@ bool item_equipable(Item *item){
   return item->equipable;
 }
 
-Item* item_next(struct Item* item){
+Item* item_next(Item* item){
   return item->next;
 }
 
-Item take_item(struct Item* items, char* str){
+Item take_item(Item* items, char* str){
   struct Item* prev = items
   struct Item* curr = items->next;
   while (curr != NULL){
