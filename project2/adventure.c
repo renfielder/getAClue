@@ -28,6 +28,8 @@ void init_game(){
       room conservatory("Conservatory", "You can almost taste freedoom! But there are vicious dogs outside.", conser_items, NULL, billiard, lounge, NULL);
       room billiard("Billiard Room", "A place for games, too bad you don't have time", billroom_items, conservatory, library, NULL, study);
       room study("Study", "You could get a lot of work done here.", study_items, library, NULL, kitchen, atrium);
+      room winRoom("Win Room","this is where you win",NULL,atrium,NULL, NULL, NULL, NULL, NULL);
+      rooom upStairs("UpStairs Secret Room", "this is just to satisfy the reqs.",upStairs_items, NULL, NULL, NULL, NULL, NULL, conservatory);
 }
 
 int main(void){
@@ -40,7 +42,7 @@ int main(void){
     printf("%c", getAvatarName(person)      
     ));
     init_game();
-    //gameOver == entering atrium and unlocking it 
+    //gameOver == entering win room and unlocking it 
     
     if(gameOver){
       printf("You've Won!");
