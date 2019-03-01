@@ -6,7 +6,7 @@ typedef struct Item{
   char *name;
   char *description;
   struct Item *next;
-} Item;
+};
 
 // constructor
 Item *item(char* name, char* description, Item *next);
