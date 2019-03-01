@@ -4,11 +4,7 @@
 #include "items.h"
 #include "rooms.h"
 
-typedef struct Avatar{
-  char* name;
-  Item* inventory;
-  Item* hat;
-};
+
 
 Avatar* avatar(char* name, Item* inventory, Item* hat){
   Avatar* avatar; 
@@ -28,6 +24,30 @@ Item* getInventory(Avatar* person){
 
 Item* getHat(Avatar* person){
   return person->hat;}
+
+//get current room 
+room* getCurrent(room* current){
+
+return current;
+}
+
+
+
+//look at the description of the room. list of items in the room
+char* lookDescription(room* current){
+
+return current -> description;
+ 
+}
+
+Item* lookItems(room* current){
+
+return current -> items;
+
+}
+
+
+
 
 
 
