@@ -1,11 +1,9 @@
 #ifndef ITEM_H
-#define ITEM_H
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#define ITEM_H
 
 struct item{
   char *name;
@@ -14,7 +12,6 @@ struct item{
   struct item *next;
 };
 typedef struct item Item;
-
 
 // constructor
 Item *item(char* name, char* description, bool equipable, Item *next);
