@@ -1,5 +1,6 @@
 #include "item.h"
 
+//item constructor
 Item *item(char* name, char* description, bool equipable, Item* next){
   Item* newItem= (Item*) malloc(sizeof(Item));
   newItem->name=malloc(sizeof(name));
@@ -13,12 +14,14 @@ Item *item(char* name, char* description, bool equipable, Item* next){
 
 char* item_name(Item* item){
   return (*item).name;
-  //item->name
 }
+
 char* item_description( Item* item){
   return item->description;
 }
 
+/*we don't actually use this. Was supposed to be a fun feature, but it has now
+turned into a laborious task*/
 bool item_equipable(Item *item){
   return item->equipable;
 }
@@ -45,16 +48,13 @@ Item* take_item(Item* items, char* str){
 }
 
 void item_free(Item *item) {
-
     if (item == NULL) {
         return;
     }
-
     item->name = NULL;
     item->description = NULL;
     item->equipable = NULL;
     item->next = NULL;
-
     free(item);
 }
 
@@ -63,5 +63,4 @@ Item* addItem(Item* newitem, Item* itemslist){
       return NULL;
     newitem.next=itemslist;
     return newitem;
- 
 }
