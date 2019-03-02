@@ -2,7 +2,6 @@
 #include <string.h>
 
 //variables
-room* current;
 //the 8 rooms
 room* kitchen, ballroom, conservatory, billiard, library, study, atrium, lounge, dining, upStairs, winRoom;
 
@@ -28,11 +27,14 @@ room* newRoom(char* name, char* description, Item* items, room* north, room* sou
 
 
 //function to exit current room to room in specified direction
-void go(room* direction){
-  if(current->direction != NULL){
-    current=direction;
+room* go(room* direction, room* current){
+  room* newRoom = current;
+  if(direction != NULL){
+    newRoom=direction;
+    return newRoom;
   }
   else printf("There is nothing here!");
+  return newRoom;
 }
 
 //locks the room

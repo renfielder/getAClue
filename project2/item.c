@@ -2,8 +2,10 @@
 
 Item *item(char* name, char* description, bool equipable, struct Item* next){
   struct Item* newItem= (struct Item*) malloc(sizeof(struct Item));
-  (*newItem).name = name;
-  (*newItem).description = description;
+  newItem->name=malloc(sizeof(name));
+  strcpy(newItem->name, name);
+  newItem->description=malloc(sizeof(description));
+  strcpy(newItem->description, description);
   (*newItem).equipable = equipable;
   (*newItem).next = next;
   return newItem;
