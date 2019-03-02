@@ -59,8 +59,8 @@ void item_free(Item *item) {
 }
 
 Item* addItem(Item* newitem, Item* itemslist){
-    if(newitem == NULL)
-      return NULL;
+    if(newitem == NULL){
+      return NULL;}
     newitem.next=itemslist;
     return newitem;
  
