@@ -6,7 +6,7 @@
 #include "avatar.h"
 
 
-
+//avatar constructor
 Avatar* avatar(char* name, Item* inventory, room* current){
   Avatar* newAvatar;
   newAvatar = (Avatar*) malloc(sizeof(Avatar));
@@ -24,7 +24,7 @@ Item* getInventory(Avatar* person){
   return person->inventory;
 }
 
-
+//get description of item in inventory of avatar
 char* getInventoryItemDescription(Avatar* person, char* variable){
 Item* prev = person -> inventory;
 Item* curr = person -> inventory -> next;
@@ -32,6 +32,7 @@ while(curr != NULL){
   if(strcmp(curr -> name, variable) == 0){
     prev->next = curr->next;
     curr->next = NULL;
+    printf("%s", curr->description);
     return curr->description;
   }
   else{
@@ -43,6 +44,7 @@ while(curr != NULL){
 return NULL;
 }
 
+<<<<<<< HEAD
 
 //get current room
 room* getCurrent(room* current){
@@ -57,6 +59,12 @@ char* lookDescription(room* current){
 
 return current -> description;
 
+=======
+//print out the description of current room
+char* lookRoomDescription(Avatar* person){
+  printf("%s\n", person->current->description);
+  return person -> current -> description;
+>>>>>>> a328a29dda166a2dce314dbe024daf3bf05ad15c
 }
 
 void lookItems(room* current){
@@ -64,8 +72,33 @@ void lookItems(room* current){
   while(item1->next != NULL){
     printf(item1->name);
     item1 = item1->next;
+<<<<<<< HEAD
   }
 
 //return current->items;
 
+=======
+  }}
+
+//return list of items in current room
+Item* lookItemsinRoom(Avatar* person){
+  return person -> current-> items;
+}
+
+char* lookItemsinRoomDescription(Avatar* person){
+  Item* prev = person -> current;
+  Item* curr = person -> current -> next;
+  while(curr != NULL){
+    if(strcmp(curr -> name, variable) == 0){
+    prev->next = curr->next;
+    curr->next = NULL;
+    return curr->description;
+  }
+  else{
+    prev = curr;
+    curr = curr -> next;
+  }
+}
+return NULL;
+>>>>>>> a328a29dda166a2dce314dbe024daf3bf05ad15c
 }

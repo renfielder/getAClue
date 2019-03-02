@@ -15,6 +15,7 @@ extern room* winRoom, *kitchen, *ballroom, *conservatory, *billiard, *library, *
 //if gameOver is 1, the game is over. The game is over when the avatar enters the winRoom
 int gameOver=0;
 
+//setting up the game environment; rooms and items
 void init_game(){
       Item *atrium_items = item("","",0,item("Chair","why",0,NULL));
       Item *lounge_items = NULL;
@@ -37,6 +38,7 @@ void init_game(){
       upStairs= newRoom("UpStairs Secret Room", "this is just to satisfy the reqs.",upStairs_items, NULL, NULL, NULL, NULL, NULL, conservatory);
 }
 
+//function to print out all available commands to the user
 void help(){
       printf("Use the command 'look' to see the room you are in.\n");
       printf("Use the command 'look' to see the room you are in.\n");
@@ -160,41 +162,82 @@ int main(void){
     //char* command;
     while(gamelen<4){
           printf("What do you want to do now?\n");
-          //int *buffer_length = (int *) malloc(sizeof(int));
-
-      //    scanf ("%[^\n]%*c", buffer);
-        //  *buffer_length = strlen(buffer);
-          char* input1 = (char*)malloc(60*sizeof(char)); //initialize strings for input
+          char* command = (char*)malloc(60*sizeof(char)); //initialize strings for input
           fgets(input1,30,stdin);
           printf("%s",person->current->name);
           printf("%s",person->current->East->name);//
           if(strcmp(input1, "look\n")==0){
-                printf("These are the items in this room.\n");
+            printf("These are the items in this room.\n");
+                Item *curr=lookItems(person->current);
                 lookItems(person->current);
               /*  printf("These are the items in this room.\n");
                 while(curr!=NULL){
-                        printf(" %s ", curr->name);
-                        curr=curr->next;  }*/
-          } else if(strcmp(input1, "go north\n")==0){
-              go(person->current->North, person->current);
-          } else if(strcmp(input1, "go south\n")==0) {
-              go(person->current->South, person->current);
-          } else if(strcmp(input1, "go east\n")==0) {
-              go((person->current)->East, person->current);
-          } else if(strcmp(input1, "go west\n")==0) {
-              go(person->current->West, person->current);
-          } else if(strcmp(input1, "go up\n")==0) {
-              go(person->current->Up, person->current);
-          } else if(strcmp(input1, "go down\n")==0) {
-              go(person->current->Down, person->current);
+                        printf(" %s ", curr->name);*/
+                   curr=curr->next;  }
+            }
+        //move avatar to different room depending on command
+           else if(strcmp(command, "go north")==0)
+                 person->current=go((person->current)->North, person->current);
+                 else if(strcmp(command, "go south")==0)
+                        person->current=go(person->current->South, person->current);
+                       else if(strcmp(command, "go east")==0)
+                              person->current=go(person->current->East, person->current);
+                             else if(strcmp(command, "go west")==0)
+                                   person->current=go(person->current->West, person->current);
+                                   else if(strcmp(command, "go up")==0)
+                                         person->current=go(person->current->Up, person->current);
+                                         else if(strcmp(command, "go down")==0)
+                                              person->current=go(person->current->Down, person->current);
+           if(strstr(command, "take")){ //if the command is a prompt to take an item
+                  prev = person -> current -> items;
+                  curr = person -> current -> items->next;
+            while(curr != NULL){
+                  if(strstr(command, curr->name)){
+                  prev->next = curr->next;
+                  curr->next = NULL;
+                  take_item(person -> current, curr->name);
+                  addItem(person -> inventory, curr);
+                  }
+                  else{
+                  prev = curr;
+                  curr = curr -> next;
+                  }
+            }
+      }
+          if(strstr(command, "drop")){ //if the command is a prompt to drop an item
+                Item *curr=lookItems(person->inventory);
+                //this loop checks if the item to be dropped is in the inventory of player, and adds it to current room if it is
+                while(curr != NULL){
+                      if(strstr(command, curr->name)){
+                            addItem(take_item(person->inventory, curr->name), person->current);
+                            break;
+                      }
+                      curr=curr->next;
           }
           else{
             printf("gotta type faster than that \n");
           }
-          free(input1);
-          input1 = NULL;
-          gamelen++;
+          if(strstr(command, "use")){ //if the command is a prompt to use an item
+                  prev = person -> inventory -> items;
+                  curr = person -> inventory -> items->next;
+                  while(curr != NULL){
+                        if(strstr(curr->name, "keyAtrium")){
+                              prev->next = curr->next;
+                              curr->next = NULL;
+                              take_item(person -> inventory, curr -> name);
+                              person -> current -> locked = NO;
+
+                        }
+                  }
+
+          }
+          //if the avatar has entered the win room, the game has been won
+          if(person->current==winRoom){
+                gameOver=1;}
     }
+    free(input1);
+    input1 = NULL;
+    gamelen++;
       printf("You've Won! Your avatar is dead!");
       free(avatar);
       freeRooms(atrium);
@@ -207,9 +250,7 @@ int main(void){
       freeRooms(lounge);
       freeRooms(dining);
 
-    /*  while(person->inventory != NULL){
-            person->inventory
-    }*/
+      printf("You've Won!\n");
 
 return 0;
 }
