@@ -26,7 +26,5 @@ Item* addItem(Item* newitem, Item* itemslist);
 
 // retrives an item from an array of Item structs
 Item* take_item(Item* items, char* str);
-
 void item_free(Item *item);
-
 #endif
