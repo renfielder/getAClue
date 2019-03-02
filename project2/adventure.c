@@ -14,15 +14,17 @@ extern room* winRoom, *kitchen, *ballroom, *conservatory, *billiard, *library, *
 int gameOver=0;
 
 void init_game(){
-      Item *atrium_items = NULL;
-      Item *lounge_items = NULL;
-      Item *droom_items = NULL;
-      Item *kitchen_items = item("","",0,item("Knife","Looks sharp!", 0, item("Ladel", "Looks dull!", 0,NULL)));
-      Item *ballroom_items = NULL;
-      Item *conser_items = NULL;
-      Item *billroom_items = NULL;
-      Item *study_items = NULL;
-      Item *upStairs_items=NULL;
+      Item *atrium_items = item("", "", 0,item("chair","a thing to throw",0,item("flower","it smells good", 0, item("atrium thing", "Looks dull!", 0,NULL))));
+      Item *lounge_items = item("", "", 0,item("keyAtrium","a thing to unlock",1,item("lounging chair","relax", 0,NULL)));
+      Item *droom_items = item("","", 0, item("plate","thing to eat on",0,item("Napkin","cleans quite nicely", 0, NULL)));
+      //I need keys
+      Item *kitchen_items = item("","",0,item("Knife","Looks sharp!", 0, item("Ladle", "Looks dull!", 0,NULL)));
+      Item *ballroom_items = item("","",0,item("Cinderella","She lost a shoe!", 0, item("Shoe", "Looks shiny, maybe someone lost it!", 0,NULL)));
+      //I need keys 
+      Item *conser_items = item("","",0,item("Sun","Looks hot!", 0, item("Heat", "Looks warm!", 0,NULL)));
+      Item *billroom_items = item("","",0,item("Pool Ball","You need to use this play", 0, item("keyConservatory", "Need to open the Conservatory", 1,NULL)));
+      Item *study_items = item("","",0,item("Book","Let's Read!", 0, item("keyKitchen", "Need this for the kitchen", 1,NULL)));
+      Item *upStairs_items= item("","",0,item("Up","Go Down!", 0, item("Stairs", "walk up the stairs", 0,NULL)));
       atrium = newRoom("Atrium", "What an ostentatious house...", atrium_items, NULL, winRoom, study, lounge,NULL,NULL);
       lounge= newRoom("Lounge", "A fancy room with several lounging couches", lounge_items, dining, NULL, conservatory, atrium,NULL,NULL);
       dining= newRoom("Dining Room", "Every thing is set up, were they planning a party?", droom_items, kitchen, lounge, NULL, NULL,NULL,NULL);
@@ -31,6 +33,7 @@ void init_game(){
       conservatory =newRoom("Conservatory", "You can almost taste freedoom! But there are vicious dogs outside.", conser_items, NULL, billiard, lounge, NULL,NULL,NULL);
       billiard= newRoom("Billiard Room", "A place for games, too bad you don't have time", billroom_items, conservatory, library, NULL, study,NULL,NULL);
       study = newRoom("Study", "You could get a lot of work done here.", study_items, library, NULL, kitchen, atrium,NULL,NULL);
+      //I need keys
       winRoom= newRoom("Win Room","this is where you win",NULL,atrium,NULL, NULL, NULL, NULL, NULL);
       upStairs= newRoom("UpStairs Secret Room", "this is just to satisfy the reqs.",upStairs_items, NULL, NULL, NULL, NULL, NULL, conservatory);
 }
@@ -49,7 +52,7 @@ void help(){
 int main(void){
 
 
-
+      char 
     init_game();    //setting up the game
     Avatar *person = avatar("No Name", NULL, NULL, atrium);
     printf("What do you want your name to be?\n");
@@ -84,20 +87,46 @@ int main(void){
                                          person->current=go(person->current->Up, person->current);
                                          else if(strcmp(command, "go down")==0)
                                               person->current=go(person->current->Down, person->current);
-          if(strstr(command, "take"){ //if the command is a prompt to take an item
+           if(strstr(command, "take")){ //if the command is a prompt to take an item
                 //parse the string, extract the string to be taken?
                 //call take function on item
-          }
-          if(strstr(command, "drop"){ //if the command is a prompt to drop an item
+                  prev = person -> current -> items;
+                  curr = person -> current -> items->next;      
+            while(curr != NULL){
+                  if(strstr(command, curr->name)){
+                  prev->next = curr->next;
+                  curr->next = NULL;
+                  take_item(person -> current, curr->name);
+                  }
+                  else{
+                  prev = curr;
+                  curr = curr -> next;
+                  }
+            }
+      }
+          if(strstr(command, "drop")){ //if the command is a prompt to drop an item
                 //parse the string, extract the string to be dropped?
                 //call drop function on item
+                  prev = person -> current -> items;
+                  curr = person -> current -> items->next;
+                
           }
-          if(strstr(command, "use"){ //if the command is a prompt to use an item
+          if(strstr(command, "use")){ //if the command is a prompt to use an item
                 //parse the string, extract the string to be used?
                 //call use function on item
+                  prev = person -> inventory -> items;
+                  curr = person -> inventory -> items->next;
+                  while(curr != NULL){
+                        if(strstr(curr->name, "keyAtrium")){
+                              prev->next = curr->next;
+                              curr->next = NULL;
+                              
+                        }
+                  }
+
           }
-          if(person->current==winRoom)
-                gameOver=1;
+          if(person->current==winRoom){
+                gameOver=1;}
     }
 
       printf("You've Won! Your avatar is dead!\n");

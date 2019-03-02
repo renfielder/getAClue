@@ -10,7 +10,6 @@
 typedef struct avatar{
   char* name;
   Item* inventory;
-  Item* hat;
   room* current;
 }Avatar;
 
@@ -23,7 +22,7 @@ Item* getInventory(Avatar* person);
 
 char* getInventoryItemDescription(Avatar* person, char* variable);
 
-room* getCurrent(room* current);
+
 
 char* lookRoomDescription(room* current);
 
