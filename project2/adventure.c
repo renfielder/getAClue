@@ -57,19 +57,20 @@ int main(void){
     printf("%s", getAvatarName(person));
     printf("Welcome to an Adventure!\n");
 
-    printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");       
+    printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
       char* command;
-    while(!gameOver){         
+          
 
+    while(!gameOver){
           printf("What do you want to do now?");
           scanf("%s", command);
           if(strcmp(command, "look")==0){
-                Item *curr=lookItemsinRoom(person->current);
+                Item *curr=lookItems(person->current);
                 printf("These are the items in this room.\n");
                 while(curr!=NULL){
-                        printf(" %s ", curr->name); 
+                        printf(" %s ", curr->name);
                         curr=curr->next;  }
-            }    
+            }
 
            else if(strcmp(command, "go north")==0)
                  person->current=go((person->current)->North, person->current);
@@ -83,6 +84,18 @@ int main(void){
                                          person->current=go(person->current->Up, person->current);
                                          else if(strcmp(command, "go down")==0)
                                               person->current=go(person->current->Down, person->current);
+          if(strstr(command, "take"){ //if the command is a prompt to take an item
+                //parse the string, extract the string to be taken?
+                //call take function on item
+          }
+          if(strstr(command, "drop"){ //if the command is a prompt to drop an item
+                //parse the string, extract the string to be dropped?
+                //call drop function on item
+          }
+          if(strstr(command, "use"){ //if the command is a prompt to use an item
+                //parse the string, extract the string to be used?
+                //call use function on item
+          }
           if(person->current==winRoom)
                 gameOver=1;
     }

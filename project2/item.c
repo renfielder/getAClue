@@ -1,7 +1,7 @@
 #include "item.h"
 
-Item *item(char* name, char* description, bool equipable, struct Item* next){
-  struct Item* newItem= (struct Item*) malloc(sizeof(struct Item));
+Item *item(char* name, char* description, bool equipable, Item* next){
+  Item* newItem= (Item*) malloc(sizeof(Item));
   newItem->name=malloc(sizeof(name));
   strcpy(newItem->name, name);
   newItem->description=malloc(sizeof(description));
@@ -27,9 +27,9 @@ Item* item_next(Item* item){
   return item->next;
 }
 
-Item take_item(Item* items, char* str){
-  struct Item* prev = items;
-  struct Item* curr = items->next;
+Item* take_item(Item* items, char* str){
+  Item* prev = items;
+  Item* curr = items->next;
   while (curr != NULL){
     if (strcmp(curr->name,str) == 0){
       prev->next = curr-> next;
