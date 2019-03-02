@@ -54,8 +54,12 @@ char* lookRoomDescription(Avatar* person){
 
 
 //return list of items in current room
-Item* lookItemsinRoom(Avatar* person){
-  return person -> current-> items;
+void lookItemsinRoom(Avatar* person){
+  Item* curr = person->current ->items;
+  while (curr != NULL){
+    printf("%s \n", curr -> name);
+    curr=curr->next;
+  }
 }
 
 void freeAvatar(Avatar* person){
