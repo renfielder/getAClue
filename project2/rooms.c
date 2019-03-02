@@ -27,14 +27,23 @@ room* newRoom(char* name, char* description, Item* items, room* north, room* sou
 
 
 //function to exit current room to room in specified direction
-room* go(room* direction, room* current){
-  room* newRoom = current;
-  if(direction != NULL){
+void go(room* direction, room* current){
+  if (direction == NULL) {
+        printf("I cannot move there.\n");
+    } else if (direction->locked) {
+        printf("It's locked.\n");
+    } else {
+        current = direction;
+        printf("Moving %s.\n", direction);
+    }
+  /*room* newRoom = current;
+  if(direction != NULL && direction->locked!=NO){
     newRoom=direction;
+    printf("%s", newRoom->name);
     return newRoom;
   }
   else printf("There is nothing here!");
-  return newRoom;
+  return newRoom;*/
 }
 
 //locks the room

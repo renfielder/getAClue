@@ -14,7 +14,7 @@ extern room* winRoom, *kitchen, *ballroom, *conservatory, *billiard, *library, *
 int gameOver=0;
 
 void init_game(){
-      Item *atrium_items = NULL;
+      Item *atrium_items = item("","",0,item("Chair","why",0,NULL));
       Item *lounge_items = NULL;
       Item *droom_items = NULL;
       Item *kitchen_items = item("","",0,item("Knife","Looks sharp!", 0, item("Ladel", "Looks dull!", 0,NULL)));
@@ -46,38 +46,44 @@ void help(){
 }
 
 int main(void){
+  //  char* input1 = (char*)malloc(sizeof(char*)); //initialize strings for input
+	  char* input2 = (char*)malloc(sizeof(char*)); //initialize string for input
     init_game();    //setting up the game
     Avatar *person = avatar("No Name", NULL, NULL, atrium);
     printf("What do you want your name to be?\n");
     scanf("%s", person->name);
     printf("%s", getAvatarName(person));
-    printf("Welcome to an Adventure!\n");
+    printf("\nWelcome to an Adventure!\n");
 
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
-      char* command;
+    char* command;
     while(!gameOver){
-          printf("What do you want to do now?");
-          scanf("%s", command);
-          if(strcmp(command, "look")==0){
-                Item *curr=lookItems(person->current);
+          printf("What do you want to do now?\n");
+          char* input1 = (char*)malloc(sizeof(char*)); //initialize strings for input
+          fgets(input1,100,stdin);
+          printf("%s\n",input1);
+          if(strcmp(input1, "look")==0){
                 printf("These are the items in this room.\n");
+                Item *curr=lookItems(person->current);
+              //  printf("These are the items in this room.\n");
                 while(curr!=NULL){
                         printf(" %s ", curr->name);
                         curr=curr->next;  }
             }
 
-           else if(strcmp(command, "go north")==0)
-                 person->current=go((person->current)->North, person->current);
-                 else if(strcmp(command, "go south")==0)
-                        person->current=go(person->current->South, person->current);
-                       else if(strcmp(command, "go east")==0)
-                              person->current=go(person->current->East, person->current);
-                             else if(strcmp(command, "go west")==0)
-                                   person->current=go(person->current->West, person->current);
-                                   else if(strcmp(command, "go up")==0)
-                                         person->current=go(person->current->Up, person->current);
-                                         else if(strcmp(command, "go down")==0)
-                                              person->current=go(person->current->Down, person->current);
+           else if(strcmp(input1, "go north")==0){
+                 go((person->current)->North, person->current);
+                 printf("test");}
+                 else if(strcmp(input1, "go south")==0)
+                        go(person->current->South, person->current);
+                       else if(strcmp(input1, "go east")==0)
+                              go(person->current->East, person->current);
+                             else if(strcmp(input1, "go west")==0)
+                                   go(person->current->West, person->current);
+                                   else if(strcmp(input1, "go up")==0)
+                                         go(person->current->Up, person->current);
+                                         else if(strcmp(input1, "go down")==0)
+                                              go(person->current->Down, person->current);
           if(person->current==winRoom)
                 gameOver=1;
     }
