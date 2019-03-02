@@ -8,9 +8,10 @@
 #include "rooms.h"
 
 extern room* winRoom, *kitchen, *ballroom, *conservatory, *billiard, *library, *study, *atrium, *lounge, *dining, *upStairs;
+
+
 //if gameOver is 1, the game is over. The game is over when the avatar enters the winRoom
 int gameOver=0;
-
 
 void init_game(){
       Item *atrium_items = NULL;
@@ -51,14 +52,20 @@ int main(void){
     scanf("%s", person->name);
     printf("%s", getAvatarName(person));
     printf("Welcome to an Adventure!\n");
-    printf("Welcome, %s", person->name);
-    printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
-    char *command;
-    while(!gameOver){         //fix
+
+    printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");       
+      char* command;
+    while(!gameOver){         
           printf("What do you want to do now?");
           scanf("%s", command);
-          if(strcmp(command, "look")==0){}
-                //look in room
+          if(strcmp(command, "look")==0){
+                Item *curr=lookItemsinRoom(person->current);
+                printf("These are the items in this room.\n");
+                while(curr!=NULL){
+                        printf(" %s ", curr->name); 
+                        curr=curr->next;  }
+            }    
+
            else if(strcmp(command, "go north")==0)
                  person->current=go((person->current)->North, person->current);
                  else if(strcmp(command, "go south")==0)
@@ -75,8 +82,10 @@ int main(void){
                 gameOver=1;
     }
       printf("You've Won! Your avatar is dead!");
+
     /*  while(person->inventory != NULL){
             person->inventory
     }*/
+
 return 0;
 }
