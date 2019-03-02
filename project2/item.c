@@ -57,3 +57,11 @@ void item_free(Item *item) {
 
     free(item);
 }
+
+Item* addItem(Item* newitem, Item* itemslist){
+    if(newitem == NULL)
+      return NULL;
+    newitem.next=itemslist;
+    return newitem;
+ 
+}
