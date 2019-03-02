@@ -21,6 +21,9 @@ char *item_description(Item *item);
 bool item_equipable(Item *item);
 Item *item_next(Item *item);
 
+//adds a specified item to a specified list
+Item* addItem(Item* newitem, Item* itemslist);
+
 // retrives an item from an array of Item structs
 Item* take_item(Item* items, char* str);
 

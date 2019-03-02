@@ -10,22 +10,25 @@
 typedef struct avatar{
   char* name;
   Item* inventory;
-  Item* hat;
   room* current;
 }Avatar;
 
-Avatar* avatar(char* name, Item* inventory, Item* hat, room* current);
+Avatar* avatar(char* name, Item* inventory, room* current);
+
 
 char* getAvatarName(Avatar* person);
 
 Item* getInventory(Avatar* person);
 
-Item* getHat(Avatar* person);
+char* getInventoryItemDescription(Avatar* person, char* variable);
 
-char* lookDescription(room* current);
+
+
+char* lookRoomDescription(room* current);
+
 
 void lookItems(room* current);
 
-room* getCurrent(room* current);
+char* lookItemsinRoomDescription(room* current);
 
 #endif
