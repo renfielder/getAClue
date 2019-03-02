@@ -50,12 +50,6 @@ char* lookRoomDescription(Avatar* person){
   return person -> current -> description;
 }
 
-void lookItems(room* current){
-  Item* item1 = current->items;
-  while(item1->next != NULL){
-    printf(item1->name);
-    item1 = item1->next;
-  }}
 
 //return list of items in current room
 Item* lookItemsinRoom(Avatar* person){
