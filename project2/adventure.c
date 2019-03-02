@@ -65,17 +65,6 @@ int main(void){
     current=atrium;
     printf("Welcome, %s", name);
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
-
-      char* command;
-      char* take = "take";
-      char* use = "use";
-      char* drop = "drop";
-      if(command == NULL){
-            printf("Try Again!");
-      }
-      else if(strlen(command) == 0){
-            printf("You didn't write anything!");
-      }
       
       while(gameOver==0){         //fix
           printf("What do you want to do now?");
