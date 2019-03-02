@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "avatar.h"
+#include "item.h"
+#include "rooms.h"
 
 extern room* winRoom, *kitchen, *ballroom, *conservatory, *billiard, *library, *study, *atrium, *lounge, *dining, *upStairs;
 //if gameOver is 1, the game is over. The game is over when the avatar enters the winRoom
@@ -11,7 +13,6 @@ int gameOver=0;
 
 
 void init_game(){
-
       Item *atrium_items = NULL;
       Item *lounge_items = NULL;
       Item *droom_items = NULL;
