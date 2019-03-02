@@ -27,8 +27,8 @@ Item* getInventory(Avatar* person){
 
 
 char* getInventoryItemDescription(Avatar* person, char* variable){
-struct Item* prev = person -> inventory
-struct Item* curr = person -> inventory -> next;
+Item* prev = person -> inventory;
+Item* curr = person -> inventory -> next;
 while(curr != NULL){
   if(strcmp(curr -> name, variable) == 0){
     prev->next = curr->next;

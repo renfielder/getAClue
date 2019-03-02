@@ -22,7 +22,7 @@ bool item_equipable(Item *item);
 Item *item_next(Item *item);
 
 // retrives an item from an array of Item structs
-Item take_item(Item* items, char* str);
+Item* take_item(Item* items, char* str);
 
 void item_free(Item *item);
 
