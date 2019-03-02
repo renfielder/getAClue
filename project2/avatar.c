@@ -44,13 +44,18 @@ return NULL;
 }
 
 
+//get current room
+room* getCurrent(room* current){
+
+return current;
+}
 
 
 
 //look at the description of the room. list of items in the room
-char* lookRoomDescription(Avatar* person){
+char* lookDescription(room* current){
 
-return person -> current -> description;
+return current -> description;
 
 }
 
@@ -59,24 +64,8 @@ void lookItems(room* current){
   while(item1->next != NULL){
     printf(item1->name);
     item1 = item1->next;
-  }}
-
-char* lookItemsinRoomDescription(Avatar* person){
-
-  Item* prev = person -> current;
-  Item* curr = person -> current -> next;
-while(curr != NULL){
-  if(strcmp(curr -> name, variable) == 0){
-    prev->next = curr->next;
-    curr->next = NULL;
-    return curr->description;
   }
-  else{
-    prev = curr;
-    curr = curr -> next;
 
-  }
-}
-return NULL;
-}
+//return current->items;
+
 }

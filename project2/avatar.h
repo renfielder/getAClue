@@ -15,20 +15,15 @@ typedef struct avatar{
 
 Avatar* avatar(char* name, Item* inventory, room* current);
 
-
 char* getAvatarName(Avatar* person);
 
 Item* getInventory(Avatar* person);
 
-char* getInventoryItemDescription(Avatar* person, char* variable);
 
-
-
-char* lookRoomDescription(room* current);
-
+char* lookDescription(room* current);
 
 void lookItems(room* current);
 
-char* lookItemsinRoomDescription(room* current);
+room* getCurrent(room* current);
 
 #endif
