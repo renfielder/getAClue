@@ -19,7 +19,12 @@ char* getAvatarName(Avatar* person);
 Item* getInventory(Avatar* person);
 char* getInventoryItemDescription(Avatar* person, char* variable);
 char* lookRoomDescription(room* current);
+
+
+void lookItems(room* current);
+
 Item* lookItemsinRoom(room* current);
+
 char* lookItemsinRoomDescription(room* current);
 
 #endif
