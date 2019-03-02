@@ -45,7 +45,9 @@ void help(){
       printf("Use the command 'help' to see this list again.\n");
 }
 
+
 int main(void){
+
     init_game();    //setting up the game
     Avatar *person = avatar("No Name", NULL, NULL, atrium);
     printf("What do you want your name to be?\n");
@@ -53,18 +55,18 @@ int main(void){
     printf("%s", getAvatarName(person));
     printf("Welcome to an Adventure!\n");
 
-    printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");       
+    printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
       char* command;
-    while(!gameOver){         
+    while(!gameOver){
           printf("What do you want to do now?");
           scanf("%s", command);
           if(strcmp(command, "look")==0){
-                Item *curr=lookItemsinRoom(person->current);
+                Item *curr=lookItems(person->current);
                 printf("These are the items in this room.\n");
                 while(curr!=NULL){
-                        printf(" %s ", curr->name); 
+                        printf(" %s ", curr->name);
                         curr=curr->next;  }
-            }    
+            }
 
            else if(strcmp(command, "go north")==0)
                  person->current=go((person->current)->North, person->current);
@@ -93,11 +95,8 @@ int main(void){
           if(person->current==winRoom)
                 gameOver=1;
     }
-      printf("You've Won! Your avatar is dead!");
 
-    /*  while(person->inventory != NULL){
-            person->inventory
-    }*/
-
+      printf("You've Won! Your avatar is dead!\n");
 return 0;
 }
+
