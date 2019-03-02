@@ -37,14 +37,9 @@ room* go(room* direction, room* current){
   return newRoom;
 }
 
-//locks the room
+//locks the room. Not that useful but fun to have
 void lock(room* tbl){
   tbl->locked=YES;
-}
-
-
-void printItems(room* tbp){
-
 }
 
 //free rooms
