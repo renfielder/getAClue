@@ -217,8 +217,8 @@ int main(void){
           }
           }
           if(strstr(command, "use")){ //if the command is a prompt to use an item
-                  prev = person -> inventory -> items;
-                  curr = person -> inventory -> items->next;
+                  Item* prev = person -> inventory -> items;
+                  Item* curr = person -> inventory -> items->next;
                   while(curr != NULL){
                         if(strstr(curr->name, "keyAtrium")){
                               prev->next = curr->next;

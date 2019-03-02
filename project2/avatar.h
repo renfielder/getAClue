@@ -18,13 +18,10 @@ Avatar* avatar(char* name, Item* inventory, room* current);
 char* getAvatarName(Avatar* person);
 Item* getInventory(Avatar* person);
 char* getInventoryItemDescription(Avatar* person, char* variable);
-char* lookRoomDescription(room* current);
+char* lookRoomDescription(Avatar* person);
 
+Item* lookItemsinRoom(Avatar* person);
 
-void lookItems(room* current);
-
-Item* lookItemsinRoom(room* current);
-
-char* lookItemsinRoomDescription(room* current);
+char* lookItemsinRoomDescription(Avatar* person);
 
 #endif
