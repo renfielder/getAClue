@@ -45,6 +45,6 @@ return current -> description;
 
 Item* lookItems(room* current){
 
-return current -> items;
+return current-> items;
 
 }
