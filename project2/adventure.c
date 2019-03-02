@@ -53,7 +53,9 @@ void help(){
       printf("Use the command 'help' to see this list again.\n");
 }
 
+
 int main(void){
+      int i;
        init_game();    //setting up the game
       printf("What do you want your name to be?\n");
       scanf("%c", person -> name);
@@ -65,7 +67,17 @@ int main(void){
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
 
       char* command;
-    while(gameOver==0){         //fix
+      char* take = "take";
+      char* use = "use";
+      char* drop = "drop";
+      if(command == NULL){
+            printf("Try Again!");
+      }
+      else if(strlen(command) == 0){
+            printf("You didn't write anything!");
+      }
+      
+      while(gameOver==0){         //fix
           printf("What do you want to do now?");
           scanf("%s", &command);
           if(strcmp(command, "look")==0)
@@ -85,7 +97,7 @@ int main(void){
           if(current==winRoom)
                 gameOver=1;
     }
-      printf("You've Won! Your avatar is dead!");
+      printf("You've Won! Your avatar is dead!\n");
 return 0;
 }
 
