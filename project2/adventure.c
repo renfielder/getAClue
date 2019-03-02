@@ -78,6 +78,18 @@ int main(void){
                                          person->current=go(person->current->Up, person->current);
                                          else if(strcmp(command, "go down")==0)
                                               person->current=go(person->current->Down, person->current);
+          if(strstr(command, "take"){ //if the command is a prompt to take an item
+                //parse the string, extract the string to be taken?
+                //call take function on item
+          }
+          if(strstr(command, "drop"){ //if the command is a prompt to drop an item
+                //parse the string, extract the string to be dropped?
+                //call drop function on item
+          }
+          if(strstr(command, "use"){ //if the command is a prompt to use an item
+                //parse the string, extract the string to be used?
+                //call use function on item
+          }
           if(person->current==winRoom)
                 gameOver=1;
     }
