@@ -45,9 +45,14 @@ void help(){
       printf("Use the command 'help' to see this list again.\n");
 }
 
+
 int main(void){
+<<<<<<< HEAD
   //  char* input1 = (char*)malloc(sizeof(char*)); //initialize strings for input
 	  char* input2 = (char*)malloc(sizeof(char*)); //initialize string for input
+=======
+
+>>>>>>> 852700d9daf0cdb50d90380ceabf9556f4272055
     init_game();    //setting up the game
     Avatar *person = avatar("No Name", NULL, NULL, atrium);
     printf("What do you want your name to be?\n");
@@ -87,11 +92,8 @@ int main(void){
           if(person->current==winRoom)
                 gameOver=1;
     }
-      printf("You've Won! Your avatar is dead!");
 
-    /*  while(person->inventory != NULL){
-            person->inventory
-    }*/
-
+      printf("You've Won! Your avatar is dead!\n");
 return 0;
 }
+
