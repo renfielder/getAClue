@@ -1,10 +1,8 @@
-SRC = adventure.c avatar.c avatar.h item.c item.h rooms.c rooms.h
+SRC = adventure.c avatar.c item.c rooms.c
+OBJ = adventure.o avatar.o item.o rooms.o
+PROG = textgame
 
-
-OBJ = adventure.o avatar.o item.o rooms.o 
-
-
-$(PROG): $ (OBJ)
+$(PROG): $(OBJ)
 		gcc $(OBJ) -o $(PROG)
 
 $(OBJ): $(SRC)

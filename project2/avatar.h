@@ -1,36 +1,31 @@
 #ifndef AVATAR_H
-#define AVATAR_H
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "rooms.h"
 #include "item.h"
 #define YES 1
 #define NO 0
+#define AVATAR_H
 
-typedef struct {
+typedef struct avatar{
   char* name;
   Item* inventory;
   Item* hat;
+  room* current;
 }Avatar;
+
+Avatar* avatar(char* name, Item* inventory, Item* hat, room* current);
 
 char* getAvatarName(Avatar* person);
 
 Item* getInventory(Avatar* person);
 
-char* getInventoryItemDescription(Avatar* person, char* variable);
+Item* getHat(Avatar* person);
 
 char* lookDescription(room* current);
 
 Item* lookItems(room* current);
 
+room* getCurrent(room* current);
 
-
-Room* getCurrent(room* current);
-
-char* lookRoomDescription(room* current);
-
-Item* lookItemsinRoom(room* current);
-
-char* lookItemsinRoomDescription(room* current);
-
+#endif
