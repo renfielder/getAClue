@@ -10,7 +10,7 @@
 typedef struct room{
   char *name;
   char *description;
-  struct Item *items;
+  Item *items;
   struct room *North;
   struct room *South;
   struct room *East;
@@ -20,10 +20,10 @@ typedef struct room{
   int locked;
 } room;
 
-
+void setDirections(room* newRoom, room* north, room* south, room* east, room* west, room* up, room*down);
 //function prototype declarations
 room* newRoom(char* name, char* description, Item* items, room *north, room *south, room *east, room *west,room *up, room *down);
-void go(room* direction, room* current);
+room* go(room* direction, room* current);
 void lock(room* tbl);
 void printItems(room* tbp);
 void freeRooms(room* oldRoom);

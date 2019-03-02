@@ -21,8 +21,9 @@ Item* getInventory(Avatar* person);
 char* getInventoryItemDescription(Avatar* person, char* variable);
 char* lookRoomDescription(Avatar* person);
 
-Item* lookItemsinRoom(Avatar* person);
+void lookItemsinRoom(Avatar* person);
 
-char* lookItemsinRoomDescription(Avatar* person);
+void freeAvatar(Avatar* person);
+//char* lookItemsinRoomDescription(Avatar* person);
 
 #endif
