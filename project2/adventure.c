@@ -60,7 +60,7 @@ int main(void){
       printf("What do you want your name to be?\n");
       scanf("%c", person -> name);
     printf("%c", getAvatarName(person));
-    printf("Welcome to an Adventure!\n");
+    printf(" \nWelcome to an Adventure!\n");
     scanf("%s", &name);
     current=atrium;
     printf("Welcome, %s", name);
