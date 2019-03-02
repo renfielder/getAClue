@@ -57,6 +57,8 @@ void lookItems(room* current){
     item1 = item1->next;
   }}
 
+
+
 //return list of items in current room
 Item* lookItemsinRoom(Avatar* person){
   return person -> current-> items;
