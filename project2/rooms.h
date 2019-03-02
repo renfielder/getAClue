@@ -10,7 +10,7 @@
 typedef struct room{
   char *name;
   char *description;
-  struct Item *items;
+  Item *items;
   struct room *North;
   struct room *South;
   struct room *East;

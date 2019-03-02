@@ -154,11 +154,11 @@ int main(void){
   //  char* input1 = (char*)malloc(sizeof(char*)); //initialize strings for input
 	  char* input1 = (char*)malloc(60*sizeof(char)); //initialize string for input
     init_game();    //setting up the game
-    Avatar *person = avatar("", NULL, atrium);
+    Avatar *person = avatar("", item("","",0,NULL), atrium);
     printf("What do you want your name to be?\n");
     scanf("%s", person->name);
-    printf("%s", getAvatarName(person));
-    printf("\nWelcome to an Adventure!\n");
+    printf("\nWecome to Adventure  %s\n", getAvatarName(person));
+  //  printf("\nWelcome to an Adventure!\n");
 
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
     //char* command;
@@ -171,7 +171,7 @@ int main(void){
           if(strcmp(input1, "look\n")==0){
             printf("These are the items in this room.\n");
                 //Item *curr=lookItems(person->current);
-                lookItems(person->current);
+                lookItemsinRoom(person);
                printf("These are the items in this room.\n");
 }
         //move avatar to different room depending on command
@@ -188,27 +188,22 @@ int main(void){
                                          else if(strcmp(command, "go down")==0)
                                               go(person->current->Down, person->current);
            if(strstr(command, "take")){ //if the command is a prompt to take an item
-                  Item* prev = person -> current -> items;
-                  Item* curr = prev->next;
+                  Item* curr = person-> current-> items;
             while(curr != NULL){
                   if(strstr(command, curr->name)){
-                  prev->next = curr->next;
-                  curr->next = NULL;
-                  take_item(person -> current, curr->name);
-                  addItem(person -> inventory, curr);
+                    curr = take_item(person -> current->items, curr->name);
+                    addItem(person -> inventory, curr);
+                    break;
                   }
-                  else{
-                  prev = curr;
-                  curr = curr -> next;
-                  }
+                    curr = curr -> next;
             }
       }
           if(strstr(command, "drop")){ //if the command is a prompt to drop an item
-                Item *curr=getInventory(person->inventory);
+                Item *curr=getInventory(person);
                 //this loop checks if the item to be dropped is in the inventory of player, and adds it to current room if it is
                 while(curr != NULL){
                       if(strstr(command, curr->name)){
-                            addItem(take_item(person->inventory, curr->name), person->current);
+                            addItem(take_item(person->inventory, curr->name), person->current->items);
                             break;
                       }
                       curr=curr->next;
@@ -232,11 +227,12 @@ int main(void){
           if(person->current==winRoom){
                 gameOver=1;}
             free(input1);
-            input1 = NULL;
+            free(command);
+            command= NULL;
             gamelen++;
     }
       printf("You've Won! Your avatar is dead!");
-      free(avatar);
+      freeAvatar(person);
       freeRooms(atrium);
       freeRooms(kitchen);
       freeRooms(ballroom);

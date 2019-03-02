@@ -34,7 +34,7 @@ void go(room* direction, room* current){
         printf("It's locked.\n");
     } else {
         current = direction;
-        printf("Moving %s.\n", direction);
+        printf("Moving %s.\n", direction->name);
     }
   /*room* newRoom = current;
   if(direction != NULL && direction->locked!=NO){
@@ -67,7 +67,6 @@ void freeRooms(room* oldRoom){
   oldRoom->West=NULL;
   oldRoom->Up= NULL;
   oldRoom->Down=NULL;
-  oldRoom->locked = NULL;
 
   free(oldRoom);
 }

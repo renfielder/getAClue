@@ -23,6 +23,7 @@ char* lookRoomDescription(Avatar* person);
 
 Item* lookItemsinRoom(Avatar* person);
 
-char* lookItemsinRoomDescription(Avatar* person);
+void freeAvatar(Avatar* person);
+//char* lookItemsinRoomDescription(Avatar* person);
 
 #endif
