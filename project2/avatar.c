@@ -20,28 +20,24 @@ Avatar* avatar(char* name, Item* inventory, room* current){
 char* getAvatarName(Avatar* person){
   return person->name;}
 
-Item* getInventory(Avatar* person){
-  return person->inventory;
+void getInventory(Avatar* person){
+  Item* curr = person-> inventory ->items;
+  while (curr != NULL){
+    printf("%s \n", curr -> name);
+    curr=curr->next;
 }
 
 //get description of item in inventory of avatar
-char* getInventoryItemDescription(Avatar* person, char* variable){
-Item* prev = person -> inventory;
-Item* curr = person -> inventory -> next;
+void getInventoryItemDescription(Avatar* person, char* variable){
+Item* curr = person -> inventory -> items;
 while(curr != NULL){
-  if(strcmp(curr -> name, variable) == 0){
-    prev->next = curr->next;
-    curr->next = NULL;
-    printf("%s", curr->description);
-    return curr->description;
+  if(strstr(curr -> name, variable)){
+    printf("%s \n", curr->description);
+    break;
   }
-  else{
-    prev = curr;
     curr = curr -> next;
 
   }
-}
-return NULL;
 }
 
 //print out the description of current room
