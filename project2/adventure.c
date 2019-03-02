@@ -96,6 +96,7 @@ int main(void){
                   prev->next = curr->next;
                   curr->next = NULL;
                   take_item(person -> current, curr->name);
+                  addItem(person -> inventory, curr);
                   }
                   else{
                   prev = curr;
@@ -121,6 +122,8 @@ int main(void){
                         if(strstr(curr->name, "keyAtrium")){
                               prev->next = curr->next;
                               curr->next = NULL;
+                              take_item(person -> inventory, curr -> name);
+                              person -> current -> locked = NO; 
                               
                         }
                   }
