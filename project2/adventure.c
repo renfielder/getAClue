@@ -91,7 +91,7 @@ int main(void){
                 Item *curr=lookItems(person->inventory);
                 while(curr != NULL){
                       if(strstr(command, curr->name)){
-                            addItem(person->current)=take_item(person->inventory, curr->name);
+                            addItem(take_item(person->inventory, curr->name), person->current);
                       }
                       curr=curr->next;
           }
