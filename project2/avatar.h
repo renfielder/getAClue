@@ -17,8 +17,8 @@ typedef struct avatar{
 Avatar* avatar(char* name, Item* inventory, room* current);
 
 char* getAvatarName(Avatar* person);
-Item* getInventory(Avatar* person);
-char* getInventoryItemDescription(Avatar* person, char* variable);
+void getInventory(Avatar* person);
+void getInventoryItemDescription(Avatar* person, char* variable);
 char* lookRoomDescription(Avatar* person);
 
 void lookItemsinRoom(Avatar* person);
