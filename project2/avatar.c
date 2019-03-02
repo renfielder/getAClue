@@ -51,6 +51,8 @@ char* lookRoomDescription(Avatar* person){
 }
 
 
+
+
 //return list of items in current room
 Item* lookItemsinRoom(Avatar* person){
   return person -> current-> items;

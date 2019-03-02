@@ -15,6 +15,7 @@ typedef struct avatar{
 
 //function prototype declarations
 Avatar* avatar(char* name, Item* inventory, room* current);
+
 char* getAvatarName(Avatar* person);
 Item* getInventory(Avatar* person);
 char* getInventoryItemDescription(Avatar* person, char* variable);
