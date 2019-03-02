@@ -61,6 +61,7 @@ void help(){
       printf("Use the command 'use ITEM' to use an item in your inventory.\n");
       printf("Use the command 'drop ITEM' to drop an item from your inventory.\n");
       printf("Use the command 'help' to see this list again.\n");
+      printf("Use the command 'inventory' to see inventory.\n");
 }
 /*
 int get_command(Avatar *avatar) {
@@ -209,7 +210,6 @@ int main(void){
   setDirections(study, library, NULL, kitchen, atrium,NULL,NULL);
   setDirections(winRoom,atrium,NULL, NULL, NULL, NULL, NULL);
   setDirections(upStairs, NULL, NULL, NULL, NULL, NULL, conservatory);
-    int gamelen =0;
   //  char* input1 = (char*)malloc(sizeof(char*)); //initialize strings for input
 	  char* input1 = (char*)malloc(60*sizeof(char)); //initialize string for input
   //  init_game();    //setting up the game
@@ -281,6 +281,9 @@ int main(void){
                   }
 
           }
+          else if (strstr(command, "inventory")){
+
+          }
           else if(strstr(command, "help")){
             help();
           }
@@ -291,9 +294,8 @@ int main(void){
           if(person->current==winRoom){
                 gameOver=1;}
             //free(input1);
+            command = NULL;
            free(command);
-            command= NULL;
-            gamelen++;
     }
       printf("You've Won! Your avatar is dead!");
       freeAvatar(person);
