@@ -74,7 +74,6 @@ int main(void){
                         printf(" %s ", curr->name);
                         curr=curr->next;  }
             }
-
            else if(strcmp(command, "go north")==0)
                  person->current=go((person->current)->North, person->current);
                  else if(strcmp(command, "go south")==0)
