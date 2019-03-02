@@ -45,14 +45,9 @@ void help(){
       printf("Use the command 'help' to see this list again.\n");
 }
 
-
 int main(void){
-<<<<<<< HEAD
   //  char* input1 = (char*)malloc(sizeof(char*)); //initialize strings for input
 	  char* input2 = (char*)malloc(sizeof(char*)); //initialize string for input
-=======
-
->>>>>>> 852700d9daf0cdb50d90380ceabf9556f4272055
     init_game();    //setting up the game
     Avatar *person = avatar("No Name", NULL, NULL, atrium);
     printf("What do you want your name to be?\n");
@@ -76,24 +71,27 @@ int main(void){
                         curr=curr->next;  }
             }
 
-           else if(strcmp(input1, "go north")==0){
+          else if(strcmp(input1, "go north")==0){
                  go((person->current)->North, person->current);
                  printf("test");}
-                 else if(strcmp(input1, "go south")==0)
+          else if(strcmp(input1, "go south")==0)
                         go(person->current->South, person->current);
-                       else if(strcmp(input1, "go east")==0)
+          else if(strcmp(input1, "go east")==0)
                               go(person->current->East, person->current);
-                             else if(strcmp(input1, "go west")==0)
+          else if(strcmp(input1, "go west")==0)
                                    go(person->current->West, person->current);
-                                   else if(strcmp(input1, "go up")==0)
+          else if(strcmp(input1, "go up")==0)
                                          go(person->current->Up, person->current);
-                                         else if(strcmp(input1, "go down")==0)
+          else if(strcmp(input1, "go down")==0)
                                               go(person->current->Down, person->current);
           if(person->current==winRoom)
                 gameOver=1;
     }
+      printf("You've Won! Your avatar is dead!");
 
-      printf("You've Won! Your avatar is dead!\n");
+    /*  while(person->inventory != NULL){
+            person->inventory
+    }*/
+
 return 0;
 }
-
