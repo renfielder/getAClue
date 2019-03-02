@@ -28,7 +28,7 @@ Item* item_next(Item* item){
 }
 
 Item take_item(Item* items, char* str){
-  struct Item* prev = items
+  struct Item* prev = items;
   struct Item* curr = items->next;
   while (curr != NULL){
     if (strcmp(curr->name,str) == 0){
