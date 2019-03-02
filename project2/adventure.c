@@ -48,6 +48,8 @@ void help(){
 
 int main(void){
 
+
+
     init_game();    //setting up the game
     Avatar *person = avatar("No Name", NULL, NULL, atrium);
     printf("What do you want your name to be?\n");
@@ -57,6 +59,8 @@ int main(void){
 
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
       char* command;
+          
+
     while(!gameOver){
           printf("What do you want to do now?");
           scanf("%s", command);
