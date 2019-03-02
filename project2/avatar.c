@@ -25,6 +25,26 @@ Item* getInventory(Avatar* person){
   return person->inventory;
 }
 
+
+char* getInventoryItemDescription(Avatar* person, char* variable){
+struct Item* prev = person -> inventory
+struct Item* curr = person -> inventory -> next;
+while(curr != NULL){
+  if(strcmp(curr -> name, variable) == 0){
+    prev->next = curr->next;
+    curr->next = NULL;
+    return curr->description;
+  }
+  else{
+    prev = curr;
+    curr = curr -> next;
+
+  }
+}
+return NULL;
+}
+
+
 Item* getHat(Avatar* person){
   return person->hat;}
 
