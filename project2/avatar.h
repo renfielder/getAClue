@@ -13,21 +13,17 @@ typedef struct avatar{
   room* current;
 }Avatar;
 
+//function prototype declarations
 Avatar* avatar(char* name, Item* inventory, room* current);
-
-
 char* getAvatarName(Avatar* person);
-
 Item* getInventory(Avatar* person);
-
 char* getInventoryItemDescription(Avatar* person, char* variable);
-
-
-
 char* lookRoomDescription(room* current);
 
 
 void lookItems(room* current);
+
+Item* lookItemsinRoom(room* current);
 
 char* lookItemsinRoomDescription(room* current);
 
