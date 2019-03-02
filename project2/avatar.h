@@ -14,18 +14,21 @@ typedef struct avatar{
   room* current;
 }Avatar;
 
-Avatar* avatar(char* name, Item* inventory, Item* hat, room* current);
+Avatar* avatar(char* name, Item* inventory, room* current);
+
 
 char* getAvatarName(Avatar* person);
 
 Item* getInventory(Avatar* person);
 
-Item* getHat(Avatar* person);
-
-char* lookDescription(room* current);
-
-Item* lookItems(room* current);
+char* getInventoryItemDescription(Avatar* person, char* variable);
 
 room* getCurrent(room* current);
+
+char* lookRoomDescription(room* current);
+
+Item* lookItemsinRoom(room* current);
+
+char* lookItemsinRoomDescription(room* current);
 
 #endif
