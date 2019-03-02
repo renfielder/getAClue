@@ -10,7 +10,7 @@
 Avatar* avatar(char* name, Item* inventory, Item* hat, room* current){
   Avatar* newAvatar;
   newAvatar = (Avatar*) malloc(sizeof(Avatar));
-  newAvatar->name=malloc(sizeof(name));
+  newAvatar->name=malloc(60*sizeof(char));
   strcpy(newAvatar->name, name);
   newAvatar -> inventory = inventory;
   newAvatar -> hat = hat;
@@ -63,8 +63,13 @@ return current -> description;
 
 }
 
-Item* lookItems(room* current){
+void lookItems(room* current){
+  Item* item1 = current->items;
+  while(item1->next != NULL){
+    printf(item1->name);
+    item1 = item1->next;
+  }
 
-return current-> items;
+//return current->items;
 
 }

@@ -10,9 +10,9 @@ room* newRoom(char* name, char* description, Item* items, room* north, room* sou
                      room* east, room* west,room* up, room* down){
 
   room *newRoom=(room*)malloc(sizeof( room));
-  newRoom->name=malloc(sizeof(name));
+  newRoom->name=malloc(60*sizeof(char));
   strcpy(newRoom->name, name);
-  newRoom->description=malloc(sizeof(description));
+  newRoom->description=malloc(120*sizeof(char));
   strcpy(newRoom->description, description);
   newRoom->items=items;
   newRoom->North=north;
@@ -28,7 +28,7 @@ room* newRoom(char* name, char* description, Item* items, room* north, room* sou
 
 //function to exit current room to room in specified direction
 void go(room* direction, room* current){
-  if (direction == NULL) {
+  if (!direction) {
         printf("I cannot move there.\n");
     } else if (direction->locked) {
         printf("It's locked.\n");
@@ -57,17 +57,22 @@ void printItems(room* tbp){
 }
 
 //free rooms
-/*
-void freeRooms(room* tbf){
 
+void freeRooms(room* oldRoom){
+  if (oldRoom == NULL) {
+      return;
+  }
 
-  free(kitchen);
-  free(ballroom);
-  free(billiard);
-  free(conservatory);
-  free(library);
-  free(study);
-  free(atrium);
-  free(lounge);
-  free(dining);
-}*/
+  oldRoom->name = NULL;
+  oldRoom->description = NULL;
+  item_free(oldRoom->items);
+  oldRoom->North=NULL;
+  oldRoom->South=NULL;
+  oldRoom->East=NULL;
+  oldRoom->West=NULL;
+  oldRoom->Up= NULL;
+  oldRoom->Down=NULL;
+  oldRoom->locked = NULL;
+
+  free(oldRoom);
+}

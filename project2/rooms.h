@@ -5,6 +5,7 @@
 #define YES 1
 #define NO 0
 #define ROOMS_H
+//enum rooms{winRoom, kitchen, ballroom, conservatory, billiard, library, study, atrium, lounge, dining, upStairs};
 
 typedef struct room{
   char *name;
@@ -25,5 +26,6 @@ room* newRoom(char* name, char* description, Item* items, room *north, room *sou
 void go(room* direction, room* current);
 void lock(room* tbl);
 void printItems(room* tbp);
+void freeRooms(room* oldRoom);
 
 #endif

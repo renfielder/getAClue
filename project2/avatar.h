@@ -24,7 +24,7 @@ Item* getHat(Avatar* person);
 
 char* lookDescription(room* current);
 
-Item* lookItems(room* current);
+void lookItems(room* current);
 
 room* getCurrent(room* current);
 
