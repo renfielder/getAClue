@@ -7,8 +7,6 @@
 #include "item.h"
 #include "rooms.h"
 
-#define BUFFER_SIZE 200
-
 //if gameOver is 1, the game is over. The game is over when the avatar enters the winRoom
 int gameOver=0;
 
@@ -63,8 +61,6 @@ void help(){
 
 
 int main(void){
-//  char input[BUFFER_SIZE], command[BUFFER_SIZE / 5] = "", arg[4 * BUFFER_SIZE / 5] = "";
-
 //initializing all the items
   Item *atrium_items = item("", "", 0,item("chair","a thing to throw",0,item("flower","it smells good", 0, item("atrium thing", "Looks dull!", 0,NULL))));
   Item *lounge_items = item("", "", 0,item("keyAtrium","a thing to unlock",1,item("lounging chair","relax", 0,NULL)));
@@ -107,11 +103,6 @@ int main(void){
   setDirections(upStairs, NULL, NULL, NULL, NULL, NULL, conservatory);
   lock(winRoom);
 
-  //  char* input1 = (char*)malloc(sizeof(char*)); //initialize strings for input
-	 // char* input1 = (char*)malloc(60*sizeof(char)); //initialize string for input
-  //  init_game();    //setting up the game
-
-
     Avatar *person = avatar("", item("","",0,item("test","its a test", 0, NULL)), atrium);
     printf("What do you want your name to be?\n");
     scanf("%s", person->name);
@@ -119,15 +110,13 @@ int main(void){
 
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
       char* command = (char*)malloc(60*sizeof(char));
-      char* input2 = (char*)malloc(60*sizeof(char));
 
+    //gameplay
     while(!gameOver){
           printf("What do you want to do now?\n");
           fgets(command,30,stdin);
-          //printf("You are in the %s",person->current->name);
           if(strcmp(command, "look\n")==0){
             printf("\nThese are the items in this room.\n");
-                //Item *curr=lookItems(person->current);
               lookItemsinRoom(person);
             }
         //move avatar to different room depending on command
@@ -144,46 +133,44 @@ int main(void){
                                          else if(strstr(command, "go down\n"))
                                                person->current = go(person->current->Down, person->current);
            else if(strstr(command, "take")){ //if the command is a prompt to take an item
-                  //fgets(input2, 20, stdin);
                   Item* curr = person-> current-> items->next;
-            while(curr != NULL){
-                  if(strstr(command, curr->name)){
-                    curr = take_item(person -> current->items, curr->name);
-                    addItem(curr, person -> inventory);
-                    printf("\nYou have taken %s. \n", curr->name);
-                    break;
+		   //check for the item to be taken in the room and add to avatars inventory.
+            	  while(curr != NULL){  
+                  	if(strstr(command, curr->name)){
+                    	curr = take_item(person -> current->items, curr->name);
+                    	addItem(curr, person -> inventory);
+                    	printf("\nYou have taken %s. \n", curr->name);
+                    	break;
                   }
-                    curr = curr -> next;
+                  curr = curr -> next;
             }
       }
           else if(strstr(command, "drop")){ //if the command is a prompt to drop an item
             Item* curr = person-> inventory->next;
             while(curr != NULL){
-            if(strstr(command, curr->name)){
-              curr = take_item(person ->inventory, curr->name);
-              addItem(curr, person -> current->items);
-              printf("\nyou have dropped %s\n", curr->name);
-              break;
+            	if(strstr(command, curr->name)){
+              		curr = take_item(person ->inventory, curr->name);
+              		addItem(curr, person -> current->items);
+              		printf("\nyou have dropped %s\n", curr->name);
+              		break;
             }
-              curr = curr -> next;
+              	curr = curr -> next;
       }
           }
           else if(strstr(command, "use")){ //if the command is a prompt to use an item
-
             if(strstr(command, "keyAtrium")){
               if(person->current == atrium){
-              Item* curr = take_item(person ->inventory, "keyAtrium");
-              winRoom->locked = 0;
-              printf("\nyou have unlocked %s\n", winRoom->name);
+              	Item* curr = take_item(person ->inventory, "keyAtrium");
+              	winRoom->locked = 0;
+              	printf("\nyou have unlocked %s\n", winRoom->name);
             }
-            else{
-              printf("\nYou can't use this here!\n");
+            	else{
+              	printf("\nYou can't use this here!\n");
             }
           }
             else if(!strstr(command, "keyAtrium")){
               printf("You can't use this!");
             }
-
             }
           else if (strstr(command, "inventory")){
             getInventory(person);
@@ -191,17 +178,15 @@ int main(void){
           else if(strstr(command, "help")){
             help();
           }
-        /*  else{
-            printf("\nCommand invalid please try again! (type help for list of commands)\n");
-          }*/
+        
           //if the avatar has entered the win room, the game has been won
           if(person->current==winRoom){
                 gameOver=1;}
     }
+	
       printf("You've Won! Your avatar is dead!");
-      input2=NULL;
-      free(input2);
-        //free(input1);
+	
+      //Freedom cannot be bestowed- it must be achieved.
       command = NULL;
       free(command);
       freeAvatar(person);
@@ -214,8 +199,6 @@ int main(void){
       freeRooms(study);
       freeRooms(lounge);
       freeRooms(dining);
-
-      printf("You've Won!\n");
 
 return 0;
 }
