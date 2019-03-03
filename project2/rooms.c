@@ -32,7 +32,7 @@ room* go(room* direction, room* current ){
         printf("You cannot move there.\n");
         return current;
     } else if (direction->locked == YES) {
-        printf("It's locked.\n");
+        printf("Thats the %s. It's locked.\n", direction->name);
         return current;
     } else {
         current = direction;

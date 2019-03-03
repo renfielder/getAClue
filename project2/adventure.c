@@ -67,15 +67,15 @@ int main(void){
 
 //initializing all the items
   Item *atrium_items = item("", "", 0,item("chair","a thing to throw",0,item("flower","it smells good", 0, item("atrium thing", "Looks dull!", 0,NULL))));
-  Item *lounge_items = item("", "", 0,item("keyAtrium","a thing to unlock",1,item("lounging chair","relax", 0,NULL)));
+  Item *lounge_items = item("", "", 0,item("cigar stub","someone was smoking. Don't they know its bad for health?",0,item("lounging chair","relax", 0,NULL)));
   Item *droom_items = item("","", 0, item("plate","thing to eat on",0,item("Napkin","cleans quite nicely", 0, NULL)));
   Item *kitchen_items = item("","",0,item("Knife","Looks sharp!", 0, item("Ladle", "Looks dull!", 0,NULL)));
   Item *ballroom_items = item("","",0,item("Cinderella","She lost a shoe!", 0, item("Shoe", "Looks shiny, maybe someone lost it!", 0,NULL)));
   Item *conser_items = item("","",0,item("Sun","Looks hot!", 0, item("Heat", "Looks warm!", 0,NULL)));
   Item *billroom_items = item("","",0,item("Pool Ball","You need to use this play", 0, item("keyConservatory", "Need to open the Conservatory", 1,NULL)));
-  Item *lib_items = item("","",0,NULL);
-  Item *study_items = item("","",0,item("Book","Let's Read!", 0, item("keyKitchen", "Need this for the kitchen", 1,NULL)));
-  Item *upStairs_items= item("","",0,item("Up","Go Down!", 0, item("Stairs", "walk up the stairs", 0,NULL)));
+  Item *lib_items = item("","",0,item("book","Too bad you can't read",0,NULL));
+  Item *study_items = item("","",0,item("Computer","No more coding...", 0, item("keyKitchen", "Need this for the kitchen", 1,NULL)));
+  Item *upStairs_items= item("","",0,item("keyAtrium", "this might unlock something important.", 1, item("Up","Go Down!", 0, item("Stairs", "walk up the stairs", 0,NULL))));
 
   //extern room* winRoom, *kitchen, *ballroom, *conservatory, *billiard, *library, *study, *atrium, *lounge, *dining, *upStairs;
 
@@ -106,6 +106,8 @@ int main(void){
   setDirections(winRoom,atrium,NULL, NULL, NULL, NULL, NULL);
   setDirections(upStairs, NULL, NULL, NULL, NULL, NULL, conservatory);
   lock(winRoom);
+  lock(conservatory);
+  lock(kitchen);
 
   //  char* input1 = (char*)malloc(sizeof(char*)); //initialize strings for input
 	 // char* input1 = (char*)malloc(60*sizeof(char)); //initialize string for input
@@ -116,7 +118,7 @@ int main(void){
     printf("What do you want your name to be?\n");
     scanf("%s", person->name);
     printf("\nWecome to Adventure  %s\n", getAvatarName(person));
-
+    printf("You wake up in a hallway in a large house. The door to leave is locked.\n");
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
       char* command = (char*)malloc(60*sizeof(char));
       char* input2 = (char*)malloc(60*sizeof(char));
@@ -126,7 +128,8 @@ int main(void){
           fgets(command,30,stdin);
           //printf("You are in the %s",person->current->name);
           if(strcmp(command, "look\n")==0){
-            printf("\nThese are the items in this room.\n");
+            printf("%s",person->current->description);
+            printf("These are the items in the room.\n");
                 //Item *curr=lookItems(person->current);
               lookItemsinRoom(person);
             }
@@ -144,18 +147,17 @@ int main(void){
                                          else if(strstr(command, "go down\n"))
                                                person->current = go(person->current->Down, person->current);
            else if(strstr(command, "take")){ //if the command is a prompt to take an item
-                  //fgets(input2, 20, stdin);
                   Item* curr = person-> current-> items->next;
-            while(curr != NULL){
-                  if(strstr(command, curr->name)){
-                    curr = take_item(person -> current->items, curr->name);
-                    addItem(curr, person -> inventory);
-                    printf("\nYou have taken %s. \n", curr->name);
-                    break;
-                  }
+                  while(curr != NULL){
+                    if(strstr(command, curr->name)){
+                      curr = take_item(person -> current->items, curr->name);
+                      addItem(curr, person -> inventory);
+                      printf("\nYou have taken %s. \n", curr->name);
+                      break;
+                    }
                     curr = curr -> next;
-            }
-      }
+                  }
+                }
           else if(strstr(command, "drop")){ //if the command is a prompt to drop an item
             Item* curr = person-> inventory->next;
             while(curr != NULL){
@@ -174,15 +176,37 @@ int main(void){
               if(person->current == atrium){
               Item* curr = take_item(person ->inventory, "keyAtrium");
               winRoom->locked = 0;
-              printf("\nyou have unlocked %s\n", winRoom->name);
+              printf("\nyou have unlocked the door! You can leave!\n");
             }
             else{
               printf("\nYou can't use this here!\n");
             }
           }
-            else if(!strstr(command, "keyAtrium")){
+          else if(strstr(command, "keyKitchen")){
+            if(person->current == ballroom||person->current == dining||person->current==study){
+            Item* curr = take_item(person ->inventory, "keyKitchen");
+            kitchen->locked = 0;
+            printf("\nyou have unlocked the Kitchen!\n");
+          }
+          else{
+            printf("\nYou can't use this here!\n");
+          }
+
+          }
+          else if(strstr(command, "keyConservatory")){
+            if(person->current == ballroom||person->current == billiard||person->current==lounge){
+            Item* curr = take_item(person ->inventory, "keyConservatory");
+            conservatory->locked = 0;
+            printf("\nyou have unlocked the Conservatory!\n");
+          }
+          else{
+            printf("\nYou can't use this here!\n");
+          }
+        }
+          else {
               printf("You can't use this!");
             }
+
 
             }
           else if (strstr(command, "inventory")){
