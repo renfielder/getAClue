@@ -15,15 +15,11 @@ typedef struct avatar{
 
 //function prototype declarations
 Avatar* avatar(char* name, Item* inventory, room* current);
-
 char* getAvatarName(Avatar* person);
 void getInventory(Avatar* person);
 void getInventoryItemDescription(Avatar* person, char* variable);
 char* lookRoomDescription(Avatar* person);
-
 void lookItemsinRoom(Avatar* person);
-
 void freeAvatar(Avatar* person);
-//char* lookItemsinRoomDescription(Avatar* person);
 
 #endif

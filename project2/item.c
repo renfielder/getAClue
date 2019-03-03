@@ -10,7 +10,6 @@ Item *item(char* name, char* description, bool equipable, Item* next){
 		printf("malloc failed\n");
 		exit(EXIT_FAILURE);
   }
-//   Item* newItem= (Item*) malloc(sizeof(Item));
   newItem->name=(char*)malloc(60*sizeof(char));
   strcpy(newItem->name, name);
   newItem->description=malloc(120*sizeof(char));
@@ -38,6 +37,7 @@ Item* item_next(Item* item){
   return item->next;
 }
 
+//helper function to take ze item
 Item* take_item(Item* items, char* str){
   Item* prev = items;
   Item* curr = items->next;
@@ -55,6 +55,7 @@ Item* take_item(Item* items, char* str){
   return NULL;
 }
 
+//Better to die fighting for freedom than be a prisoner all the days of your life.
 void item_free(Item *item) {
     if (item == NULL) {
         return;
