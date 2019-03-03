@@ -63,12 +63,21 @@ void item_free(Item *item) {
     item->description = NULL;
     item->equipable = NULL;
     item->next = NULL;
+    free(item->name);
+    free(item->description);
+    free(item->next);
     free(item);
 }
 
 Item* addItem(Item* newitem, Item* itemslist){
+    Item* currList =itemslist;
     if(newitem == NULL){
       return NULL;}
-    newitem->next=itemslist;
+    while(currList->next != NULL){
+    currList = currList -> next;}
+    currList->next = newitem;
+    currList = currList -> next;
+    currList -> next = NULL;
+    printf("added item: %s", newitem->name);
     return newitem;
-}
+  }
