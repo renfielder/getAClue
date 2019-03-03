@@ -47,9 +47,6 @@ char* lookRoomDescription(Avatar* person){
   return person -> current -> description;
 }
 
-
-
-
 //return list of items in current room
 void lookItemsinRoom(Avatar* person){
   Item* curr = person->current ->items;
@@ -59,6 +56,7 @@ void lookItemsinRoom(Avatar* person){
   }
 }
 
+//Live free or die
 void freeAvatar(Avatar* person){
   if (person == NULL) {
       return;
@@ -71,20 +69,3 @@ void freeAvatar(Avatar* person){
   freeRooms(person->current);
   free(person);
 }
-
-/*char* lookItemsinRoomDescription(Avatar* person){
-  Item* prev = person ->current->items;
-  Item* curr = prev -> next;
-  while(curr != NULL){
-    if(strcmp(curr -> name, variable) == 0){
-    prev->next = curr->next;
-    curr->next = NULL;
-    return curr->description;
-  }
-  else{
-    prev = curr;
-    curr = curr -> next;
-  }
-}
-return NULL;
-}*/
