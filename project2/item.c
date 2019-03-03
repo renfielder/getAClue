@@ -78,6 +78,5 @@ Item* addItem(Item* newitem, Item* itemslist){
     currList->next = newitem;
     currList = currList -> next;
     currList -> next = NULL;
-    printf("added item: %s", newitem->name);
     return newitem;
   }
