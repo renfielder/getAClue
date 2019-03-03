@@ -95,7 +95,7 @@ int main(void){
   setDirections(dining, kitchen, lounge, NULL, NULL,NULL,NULL);
   setDirections(kitchen, NULL, dining, ballroom, study ,NULL,NULL);
   setDirections(ballroom, NULL, NULL, conservatory, kitchen,NULL,NULL);
-  setDirections(conservatory, NULL, billiard, lounge, ballroom,NULL,upStairs);
+  setDirections(conservatory, NULL, billiard, lounge, ballroom,upStairs,NULL);
   setDirections(billiard, conservatory, library, NULL, NULL ,NULL,NULL);
   setDirections(library, billiard, study, NULL,NULL,NULL,NULL);
   setDirections(study, library, NULL, kitchen, atrium,NULL,NULL);
