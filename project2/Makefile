@@ -3,6 +3,6 @@ OBJ = adventure.o avatar.o item.o rooms.o
 PROG = textgame
 
 $(PROG): $(OBJ)
-		gcc $(OBJ) -o $(PROG)
+		gcc -g $(OBJ) -o $(PROG)
 
 $(OBJ): $(SRC)

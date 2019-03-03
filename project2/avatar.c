@@ -21,15 +21,16 @@ char* getAvatarName(Avatar* person){
   return person->name;}
 
 void getInventory(Avatar* person){
-  Item* curr = person-> inventory ->items;
+  Item* curr = person-> inventory;
   while (curr != NULL){
     printf("%s \n", curr -> name);
     curr=curr->next;
 }
+}
 
 //get description of item in inventory of avatar
 void getInventoryItemDescription(Avatar* person, char* variable){
-Item* curr = person -> inventory -> items;
+Item* curr = person -> inventory;
 while(curr != NULL){
   if(strstr(curr -> name, variable)){
     printf("%s \n", curr->description);
@@ -65,6 +66,9 @@ void freeAvatar(Avatar* person){
   person->name = NULL;
   person->inventory = NULL;
   person->current = NULL;
+  free(person->name);
+  item_free(person->inventory);
+  freeRooms(person->current);
   free(person);
 }
 
