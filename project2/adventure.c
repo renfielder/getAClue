@@ -9,14 +9,10 @@
 
 #define BUFFER_SIZE 200
 
-
-
-
-
 //if gameOver is 1, the game is over. The game is over when the avatar enters the winRoom
 int gameOver=0;
 
-//setting up the game environment; rooms and item
+//setting up the game environment; rooms and item. not used. for future reference
 /*
 void init_game(){
       Item *atrium_items = item("", "", 0,item("chair","a thing to throw",0,item("flower","it smells good", 0, item("atrium thing", "Looks dull!", 0,NULL))));
@@ -52,6 +48,7 @@ void init_game(){
       setDirections(upStairs, NULL, NULL, NULL, NULL, NULL, conservatory);
 }
 */
+
 //function to print out all available commands to the user
 void help(){
       printf("Use the command 'look' to see the room you are in.\n");
@@ -67,19 +64,22 @@ void help(){
 
 int main(void){
 //  char input[BUFFER_SIZE], command[BUFFER_SIZE / 5] = "", arg[4 * BUFFER_SIZE / 5] = "";
+
+//initializing all the items
   Item *atrium_items = item("", "", 0,item("chair","a thing to throw",0,item("flower","it smells good", 0, item("atrium thing", "Looks dull!", 0,NULL))));
   Item *lounge_items = item("", "", 0,item("keyAtrium","a thing to unlock",1,item("lounging chair","relax", 0,NULL)));
   Item *droom_items = item("","", 0, item("plate","thing to eat on",0,item("Napkin","cleans quite nicely", 0, NULL)));
-    //I need keys
   Item *kitchen_items = item("","",0,item("Knife","Looks sharp!", 0, item("Ladle", "Looks dull!", 0,NULL)));
   Item *ballroom_items = item("","",0,item("Cinderella","She lost a shoe!", 0, item("Shoe", "Looks shiny, maybe someone lost it!", 0,NULL)));
-    //I need keys
   Item *conser_items = item("","",0,item("Sun","Looks hot!", 0, item("Heat", "Looks warm!", 0,NULL)));
   Item *billroom_items = item("","",0,item("Pool Ball","You need to use this play", 0, item("keyConservatory", "Need to open the Conservatory", 1,NULL)));
   Item *lib_items = item("","",0,NULL);
   Item *study_items = item("","",0,item("Book","Let's Read!", 0, item("keyKitchen", "Need this for the kitchen", 1,NULL)));
   Item *upStairs_items= item("","",0,item("Up","Go Down!", 0, item("Stairs", "walk up the stairs", 0,NULL)));
+
   //extern room* winRoom, *kitchen, *ballroom, *conservatory, *billiard, *library, *study, *atrium, *lounge, *dining, *upStairs;
+
+  //initializing all the rooms
   room* atrium = newRoom("Atrium", "What an ostentatious house...", atrium_items, NULL, NULL, NULL, NULL,NULL,NULL);
   room* lounge= newRoom("Lounge", "A fancy room with several lounging couches", lounge_items, NULL, NULL, NULL,NULL,NULL,NULL);
   room* dining= newRoom("Dining Room", "Every thing is set up, were they planning a party?", droom_items, NULL,NULL, NULL, NULL,NULL,NULL);
@@ -92,17 +92,8 @@ int main(void){
   room* winRoom= newRoom("Win Room","this is where you win",NULL,NULL,NULL, NULL, NULL, NULL, NULL);
   room* upStairs= newRoom("UpStairs Secret Room", "this is just to satisfy the reqs.",upStairs_items, NULL, NULL, NULL, NULL, NULL, NULL);
 
-  /*  atrium = newRoom("Atrium", "What an ostentatious house...", atrium_items, NULL, winRoom, study, lounge,NULL,NULL);
-  lounge= newRoom("Lounge", "A fancy room with several lounging couches", lounge_items, dining, NULL, conservatory, atrium,NULL,NULL);
-  dining= newRoom("Dining Room", "Every thing is set up, were they planning a party?", droom_items, kitchen, lounge, NULL, NULL,NULL,NULL);
-  kitchen= newRoom("Kitchen", "This is where the sausage is made.", kitchen_items, NULL, dining, study, ballroom,NULL,NULL);
-  ballroom= newRoom("Balllroom", "You could fit so many bodies in here!", ballroom_items, NULL, NULL, conservatory, kitchen,NULL,NULL);
-  conservatory =newRoom("Conservatory", "You can almost taste freedoom! But there are vicious dogs outside.", conser_items, NULL, billiard, lounge, NULL,NULL,upStairs);
-  billiard= newRoom("Billiard Room", "A place for games, too bad you don't have time", billroom_items, conservatory, library, NULL, study,NULL,NULL);
-  study = newRoom("Study", "You could get a lot of work done here.", study_items, library, NULL, kitchen, atrium,NULL,NULL);
-  winRoom= newRoom("Win Room","this is where you win",NULL,atrium,NULL, NULL, NULL, NULL, NULL);
-  upStairs= newRoom("UpStairs Secret Room", "this is just to satisfy the reqs.",upStairs_items, NULL, NULL, NULL, NULL, NULL, conservatory);*/
   //NSEWUP
+  //connecting the rooms together
   setDirections(atrium, NULL, winRoom, study, lounge,NULL,NULL);
   setDirections(lounge, dining, NULL, atrium, conservatory,NULL,NULL);
   setDirections(dining, kitchen, lounge, NULL, NULL,NULL,NULL);
@@ -115,19 +106,21 @@ int main(void){
   setDirections(winRoom,atrium,NULL, NULL, NULL, NULL, NULL);
   setDirections(upStairs, NULL, NULL, NULL, NULL, NULL, conservatory);
   lock(winRoom);
+
   //  char* input1 = (char*)malloc(sizeof(char*)); //initialize strings for input
 	 // char* input1 = (char*)malloc(60*sizeof(char)); //initialize string for input
   //  init_game();    //setting up the game
+
+
     Avatar *person = avatar("", item("","",0,item("test","its a test", 0, NULL)), atrium);
     printf("What do you want your name to be?\n");
     scanf("%s", person->name);
     printf("\nWecome to Adventure  %s\n", getAvatarName(person));
-  //  printf("\nWelcome to an Adventure!\n");
 
     printf("You are now in the atrium. Your goal is to free yourself from the house. Explore the house to find the key.\n");
-    //char* command;
       char* command = (char*)malloc(60*sizeof(char));
       char* input2 = (char*)malloc(60*sizeof(char));
+
     while(!gameOver){
           printf("What do you want to do now?\n");
           fgets(command,30,stdin);

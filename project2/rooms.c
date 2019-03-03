@@ -36,7 +36,7 @@ room* go(room* direction, room* current ){
         return current;
     } else {
         current = direction;
-        printf("\nMoving to  %s.", current->name);
+        printf("Moving to  %s.", current->name);
         printf("\n%s\n",current->description);
         return current;
 
